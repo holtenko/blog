@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>http://blog.holten.com/2017/07/21/spring-boot-0-intro/</loc>
+    <lastmod>2017-08-03T03:29:44.338Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Boot那些事0-入门篇</title>
+        <pubTime>2017-07-21T08:21:53.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>Spring Boot</tag>
+         
+        <tag>入门</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring" url="http://blog.holten.com/categories/Spring/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.holten.com/2016/10/17/javaCreateThread/</loc>
+    <lastmod>2017-08-03T03:23:02.056Z</lastmod>
+    <data>
+        <display>
+        <title>Java中创建线程的两种方式</title>
+        <pubTime>2016-10-17T08:10:15.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>线程</tag>
+         
+        <tag>Thread</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://blog.holten.com/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.holten.com/2016/08/02/LombokIntroduction/</loc>
+    <lastmod>2017-08-03T03:23:02.056Z</lastmod>
+    <data>
+        <display>
+        <title>Lombok介绍及使用方法</title>
+        <pubTime>2016-08-02T03:19:01.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>Lombok</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://blog.holten.com/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.holten.com/2016/08/16/StringMemory/</loc>
+    <lastmod>2017-08-03T03:23:02.056Z</lastmod>
+    <data>
+        <display>
+        <title>Java中字符串内存位置浅析</title>
+        <pubTime>2016-08-16T05:12:56.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>内存</tag>
+         
+        <tag>String</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://blog.holten.com/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.holten.com/2015/12/05/git-install-with-source/</loc>
+    <lastmod>2017-08-03T03:23:02.056Z</lastmod>
+    <data>
+        <display>
+        <title>CentOS下通过源码安装最新版Git</title>
+        <pubTime>2015-12-05T06:53:30.000Z</pubTime>
+        
+        <tag>Git</tag>
+         
+        <tag>安装</tag>
+         
+         
+           
+             
+              <breadCrumb title="Git" url="http://blog.holten.com/categories/Git/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.holten.com/2016/03/17/iterm2-with-ohmyzsh/</loc>
+    <lastmod>2017-08-03T03:23:02.056Z</lastmod>
+    <data>
+        <display>
+        <title>iTerm2和oh-my-zsh的个性化定制</title>
+        <pubTime>2016-03-17T11:55:58.000Z</pubTime>
+        
+        <tag>shell</tag>
+         
+        <tag>Setup</tag>
+         
+         
+           
+             
+              <breadCrumb title="shell" url="http://blog.holten.com/categories/shell/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.holten.com/2015/11/17/hexo-setup/</loc>
+    <lastmod>2017-08-03T03:23:02.056Z</lastmod>
+    <data>
+        <display>
+        <title>用Hexo搭建属于自己的Blog</title>
+        <pubTime>2015-11-17T07:15:21.000Z</pubTime>
+        
+        <tag>安装</tag>
+         
+        <tag>Setup</tag>
+         
+        <tag>Hexo</tag>
+         
+        <tag>教程</tag>
+         
+         
+           
+             
+              <breadCrumb title="Hexo" url="http://blog.holten.com/categories/Hexo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.holten.com/2016/04/09/JVM-memory-area/</loc>
+    <lastmod>2017-08-03T03:23:02.056Z</lastmod>
+    <data>
+        <display>
+        <title>JVM内存区域划分</title>
+        <pubTime>2016-04-09T07:20:35.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>内存</tag>
+         
+        <tag>jvm</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://blog.holten.com/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.holten.com/2015/11/25/jdk-install/</loc>
+    <lastmod>2017-08-03T03:23:02.056Z</lastmod>
+    <data>
+        <display>
+        <title>Linux环境下RPM方式JDK安装及配置</title>
+        <pubTime>2015-11-25T05:48:22.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>安装</tag>
+         
+        <tag>jdk</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://blog.holten.com/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.holten.com/2016/04/21/jvm-gc-objectreference/</loc>
+    <lastmod>2017-08-03T03:23:02.056Z</lastmod>
+    <data>
+        <display>
+        <title>JVM内存回收对象及引用分析</title>
+        <pubTime>2016-04-21T13:58:36.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>jvm</tag>
+         
+        <tag>内存回收</tag>
+         
+        <tag>回收对象</tag>
+         
+        <tag>引用</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://blog.holten.com/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.holten.com/2015/12/05/rxtx-comm/</loc>
+    <lastmod>2017-08-03T03:23:02.056Z</lastmod>
+    <data>
+        <display>
+        <title>Java利用Rxtx进行串口通讯</title>
+        <pubTime>2015-12-05T08:04:02.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>串口</tag>
+         
+        <tag>Rxtx</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://blog.holten.com/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.holten.com/2016/05/08/bubblesort/</loc>
+    <lastmod>2017-08-03T03:23:02.056Z</lastmod>
+    <data>
+        <display>
+        <title>排序算法之冒泡排序</title>
+        <pubTime>2016-05-08T08:43:27.000Z</pubTime>
+        
+        <tag>Algorithm</tag>
+         
+        <tag>Sort</tag>
+         
+        <tag>排序</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="Algorithm" url="http://blog.holten.com/categories/Algorithm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+</urlset>
