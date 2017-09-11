@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.holten.com/2017/09/11/design-pattern-1/</loc>
+    
+    <lastmod>2017-09-11T08:07:28.120Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.holten.com/2017/07/21/spring-boot-0-intro/</loc>
     
     <lastmod>2017-08-03T03:51:47.002Z</lastmod>
@@ -10,13 +17,6 @@
   
   <url>
     <loc>http://blog.holten.com/2016/10/17/javaCreateThread/</loc>
-    
-    <lastmod>2017-08-03T03:23:02.056Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.holten.com/2016/08/16/StringMemory/</loc>
     
     <lastmod>2017-08-03T03:23:02.056Z</lastmod>
     
@@ -37,7 +37,7 @@
   </url>
   
   <url>
-    <loc>http://blog.holten.com/2016/03/17/iterm2-with-ohmyzsh/</loc>
+    <loc>http://blog.holten.com/2016/04/09/JVM-memory-area/</loc>
     
     <lastmod>2017-08-03T03:23:02.056Z</lastmod>
     
@@ -45,6 +45,13 @@
   
   <url>
     <loc>http://blog.holten.com/2015/11/17/hexo-setup/</loc>
+    
+    <lastmod>2017-08-03T03:23:02.056Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.holten.com/2016/03/17/iterm2-with-ohmyzsh/</loc>
     
     <lastmod>2017-08-03T03:23:02.056Z</lastmod>
     
@@ -79,7 +86,7 @@
   </url>
   
   <url>
-    <loc>http://blog.holten.com/2016/04/09/JVM-memory-area/</loc>
+    <loc>http://blog.holten.com/2016/08/16/StringMemory/</loc>
     
     <lastmod>2017-08-03T03:23:02.056Z</lastmod>
     

@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>http://blog.holten.com/2017/09/11/design-pattern-1/</loc>
+    <lastmod>2017-09-11T08:07:28.120Z</lastmod>
+    <data>
+        <display>
+        <title>没事学点设计模式-概览</title>
+        <pubTime>2017-09-11T07:27:00.000Z</pubTime>
+        
+        <tag>设计模式</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.holten.com/2017/07/21/spring-boot-0-intro/</loc>
     <lastmod>2017-08-03T03:51:47.002Z</lastmod>
     <data>
@@ -40,30 +57,6 @@
         <tag>线程</tag>
          
         <tag>Thread</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java" url="http://blog.holten.com/categories/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://blog.holten.com/2016/08/16/StringMemory/</loc>
-    <lastmod>2017-08-03T03:23:02.056Z</lastmod>
-    <data>
-        <display>
-        <title>Java中字符串内存位置浅析</title>
-        <pubTime>2016-08-16T05:12:56.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>内存</tag>
-         
-        <tag>String</tag>
          
          
            
@@ -124,21 +117,23 @@
 
     
   <url>
-    <loc>http://blog.holten.com/2016/03/17/iterm2-with-ohmyzsh/</loc>
+    <loc>http://blog.holten.com/2016/04/09/JVM-memory-area/</loc>
     <lastmod>2017-08-03T03:23:02.056Z</lastmod>
     <data>
         <display>
-        <title>iTerm2和oh-my-zsh的个性化定制</title>
-        <pubTime>2016-03-17T11:55:58.000Z</pubTime>
+        <title>JVM内存区域划分</title>
+        <pubTime>2016-04-09T07:20:35.000Z</pubTime>
         
-        <tag>shell</tag>
+        <tag>Java</tag>
          
-        <tag>Setup</tag>
+        <tag>内存</tag>
+         
+        <tag>jvm</tag>
          
          
            
              
-              <breadCrumb title="shell" url="http://blog.holten.com/categories/shell/"/>
+              <breadCrumb title="Java" url="http://blog.holten.com/categories/Java/"/>
           
         </display>
     </data>
@@ -155,16 +150,38 @@
         
         <tag>安装</tag>
          
-        <tag>Setup</tag>
-         
         <tag>Hexo</tag>
          
         <tag>教程</tag>
+         
+        <tag>Setup</tag>
          
          
            
              
               <breadCrumb title="Hexo" url="http://blog.holten.com/categories/Hexo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.holten.com/2016/03/17/iterm2-with-ohmyzsh/</loc>
+    <lastmod>2017-08-03T03:23:02.056Z</lastmod>
+    <data>
+        <display>
+        <title>iTerm2和oh-my-zsh的个性化定制</title>
+        <pubTime>2016-03-17T11:55:58.000Z</pubTime>
+        
+        <tag>Setup</tag>
+         
+        <tag>shell</tag>
+         
+         
+           
+             
+              <breadCrumb title="shell" url="http://blog.holten.com/categories/shell/"/>
           
         </display>
     </data>
@@ -270,18 +287,18 @@
 
     
   <url>
-    <loc>http://blog.holten.com/2016/04/09/JVM-memory-area/</loc>
+    <loc>http://blog.holten.com/2016/08/16/StringMemory/</loc>
     <lastmod>2017-08-03T03:23:02.056Z</lastmod>
     <data>
         <display>
-        <title>JVM内存区域划分</title>
-        <pubTime>2016-04-09T07:20:35.000Z</pubTime>
+        <title>Java中字符串内存位置浅析</title>
+        <pubTime>2016-08-16T05:12:56.000Z</pubTime>
         
         <tag>Java</tag>
          
         <tag>内存</tag>
          
-        <tag>jvm</tag>
+        <tag>String</tag>
          
          
            
