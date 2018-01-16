@@ -17,7 +17,7 @@ rss:
 since: 2015
 
 # icon between year and author @Footer
-authoricon: heart
+authoricon: book
 
 # Footer `powered-by` and `theme-info` copyright
 copyright: true
@@ -32,7 +32,7 @@ copyright: true
 canonical: true
 
 # Change headers hierarchy on site-subtitle (will be main site description) and on all post/pages titles for better SEO-optimization.
-seo: false
+seo: true
 
 # If true, will add site-subtitle to index page, added in main hexo config.
 # subtitle: Subtitle
@@ -180,7 +180,7 @@ toc:
 # Creative Commons 4.0 International License.
 # http://creativecommons.org/
 # Available: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | zero
-#creative_commons: by-nc-sa
+creative_commons: by-nc-nd
 #creative_commons:
 
 
