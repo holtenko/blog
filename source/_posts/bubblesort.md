@@ -2,6 +2,7 @@
 title: 排序算法之冒泡排序
 date: 2016-05-08 16:43:27
 categories: Algorithm
+mathjax: true
 tags:
 - Algorithm
 - Sort
