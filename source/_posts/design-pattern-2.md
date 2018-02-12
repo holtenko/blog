@@ -1,6 +1,7 @@
 ---
 title: 没事学点设计模式-工厂模式
 date: 2017-09-29 09:23:52
+updated: 2018-02-12 13:50:16
 tags:
 - 设计模式
 ---
@@ -34,20 +35,20 @@ tags:
 
 1.首先需要创建一个iphone接口和其实现类：接口iphone，实现类iphone7\iphone8\iphonex；
 ```java
-public interface iphone {
+public interface Iphone {
     void build();
 }
 ```
 ```java
-public class iphone7 implements iphone {
+public class Iphone7 implements Iphone {
     @Override
     public void build() {
-       System.out.println("iphone7 get!");
+        System.out.println("iphone7 get!");
     }
 }
 ```
 ```java
-public class iphone8 implements iphone {
+public class Iphone8 implements Iphone {
     @Override
     public void build() {
         System.out.println("iphone8 get!");
@@ -55,7 +56,7 @@ public class iphone8 implements iphone {
 }
 ```
 ```java
-public class iphonex implements iphone {
+public class Iphonex implements Iphone {
     @Override
     public void build() {
         System.out.println("iphonex get!");
@@ -64,25 +65,29 @@ public class iphonex implements iphone {
 ```
 2.然后定义工厂类iphoneFactory
 ```java
-public class iphoneFactory {
-   public Shape getIphone(String iphoneType){
-        if(iphoneType == null){
-         return null;
-        }        
-        if(iphoneType.equalsIgnoreCase("iphone7")){
-         return new iphone7();
-        } else if(iphoneType.equalsIgnoreCase("iphone8")){
-         return new iphone8();
-        } else if(iphoneType.equalsIgnoreCase("iphonex")){
-         return new iphonex();
+public class IphoneFactory {
+    public Iphone getIphone(String iphoneType) {
+        if (iphoneType == null) {
+            return null;
+        }
+        if (iphoneType.equalsIgnoreCase("iphone7")) {
+            return new Iphone7();
+        } else if (iphoneType.equalsIgnoreCase("iphone8")) {
+            return new Iphone8();
+        } else if (iphoneType.equalsIgnoreCase("iphonex")) {
+            return new Iphonex();
         }
         return null;
-   }
+    }
 }
 ```
 3.然后就可以随意生产了，比如先来一个iphonex哈哈哈
 ```java
-iphoneFactory iphonefactory = new iphoneFactory();
-iphone iphone1 = iphonefactory.getShape("iphonex");
-iphone1.draw();
+public class FactoryDemo {
+    public static void main(String[] args) {
+        IphoneFactory iphonefactory = new IphoneFactory();
+        Iphone iphone = iphonefactory.getIphone("iphonex");
+        iphone.build();
+    }
+}
 ```
