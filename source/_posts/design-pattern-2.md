@@ -2,6 +2,7 @@
 title: 没事学点设计模式-工厂模式
 date: 2017-09-29 09:23:52
 updated: 2018-02-12 13:50:16
+categories: Basic
 tags:
 - 设计模式
 ---
