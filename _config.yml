@@ -68,6 +68,16 @@ baidusitemap:
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
+douban:
+  user: holtenko
+  book:
+    title: '我的读书'
+    quote: '读书列表'
+  movie:
+    title: '我的电影'
+    quote: '电影列表'
+  timeout: 10000 #optional
+
 ## Themes: https://hexo.io/themes/
 theme: next
 
