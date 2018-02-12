@@ -35,6 +35,7 @@ tags:
 ### 实例
 我们以生产iPhone的生产工厂为例。
 
+#### 简单工厂模式
 1.首先需要创建一个iphone接口和其实现类：接口iphone，实现类iphone7\iphone8\iphonex；
 ```java
 public interface Iphone {
@@ -89,6 +90,79 @@ public class FactoryDemo {
     public static void main(String[] args) {
         IphoneFactory iphonefactory = new IphoneFactory();
         Iphone iphone = iphonefactory.getIphone("iphonex");
+        iphone.build();
+    }
+}
+```
+
+#### 工厂方法模式
+1.首先需要创建一个iphone接口和其实现类：接口iphone，实现类iphone7\iphone8\iphonex；
+```java
+public interface Iphone {
+    void build();
+}
+```
+```java
+public class Iphone7 implements Iphone {
+    @Override
+    public void build() {
+        System.out.println("iphone7 get!");
+    }
+}
+```
+```java
+public class Iphone8 implements Iphone {
+    @Override
+    public void build() {
+        System.out.println("iphone8 get!");
+    }
+}
+```
+```java
+public class Iphonex implements Iphone {
+    @Override
+    public void build() {
+        System.out.println("iphonex get!");
+    }
+}
+```
+2.然后定义工厂接口iphoneFactory
+```java
+public interface IphoneFactory {
+    public Iphone getIphone()；
+}
+```
+3.实现工厂接口
+```java
+public class Iphone7Factory implements IphoneFactory {
+    @Override
+    public Iphone getIphone() {
+        return new Iphone7();
+    }
+}
+```
+```java
+public class Iphone8Factory implements IphoneFactory {
+    @Override
+    public Iphone getIphone() {
+        return new Iphone8();
+    }
+}
+```
+```java
+public class IphonexFactory implements IphoneFactory {
+    @Override
+    public Iphone getIphone() {
+        return new Iphonex();
+    }
+}
+```
+3.然后就也可以随意生产了，比如再来一个iphone8
+```java
+public class FactoryDemo {
+    public static void main(String[] args) {
+        IphoneFactory iphonefactory = new Iphone8Factory();
+        Iphone iphone = iphonefactory.getIphone();
         iphone.build();
     }
 }
