@@ -91,3 +91,6 @@ public class FactoryDemo {
     }
 }
 ```
+
+### 本文源码已托管至GitHub，欢迎Star
+[工厂模式源码](https://github.com/holtenko/DesignPatterns/tree/master/src/Factory)
