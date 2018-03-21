@@ -45,10 +45,10 @@ cache:
 # For example, you put your favicons into `hexo-site/source/images` directory.
 # Then need to rename & redefine they on any other names, otherwise icons from Next will rewrite your custom icons in Hexo.
 favicon:
-  small: /images/favicon-16x16.png
-  medium: /images/favicon-32x32.png
-  apple_touch_icon: /images/favicon-32x32.png
-  safari_pinned_tab: /images/favicon-32x32.png
+  small: http://oar4g068j.bkt.clouddn.com/favicon-16x16.png
+  medium: http://oar4g068j.bkt.clouddn.com/favicon-32x32.png
+  apple_touch_icon: http://oar4g068j.bkt.clouddn.com/favicon-32x32.png
+  safari_pinned_tab: http://oar4g068j.bkt.clouddn.com/favicon-32x32.png
   #android_manifest: /images/manifest.json
   #ms_browserconfig: /images/browserconfig.xml
 
@@ -189,7 +189,7 @@ links:
 # Sidebar Avatar
 # in theme directory(source/images): /images/avatar.gif
 # in site  directory(source/uploads): /uploads/avatar.gif
-avatar: /images/logo.png
+avatar: http://oar4g068j.bkt.clouddn.com/logo.png
 
 # Table Of Contents in the Sidebar
 toc:
@@ -275,13 +275,13 @@ symbols_count_time:
 # Wechat Subscriber
 wechat_subscriber:
   enabled: true
-  qcode: /images/qrcode.jpg
+  qcode: http://oar4g068j.bkt.clouddn.com/wechatpay.jpg
   description: 公众号刚刚建立，文章正在努力写作中...
 
 # Reward
 reward_comment: 帮我买杯咖啡才有精神写文章呀~
-wechatpay: /images/wechatpay.jpg
-alipay: /images/alipay.jpg
+wechatpay: http://oar4g068j.bkt.clouddn.com/wechatpay.jpg
+alipay: http://oar4g068j.bkt.clouddn.com/wechatpay.jpg
 #bitcoin: /images/bitcoin.png
 
 # Related popular posts
