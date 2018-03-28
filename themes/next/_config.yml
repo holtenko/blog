@@ -275,7 +275,7 @@ symbols_count_time:
 # Wechat Subscriber
 wechat_subscriber:
   enabled: true
-  qcode: http://oar4g068j.bkt.clouddn.com/wechatpay.jpg
+  qcode: http://oar4g068j.bkt.clouddn.com/qrcode.jpg
   description: 公众号刚刚建立，文章正在努力写作中...
 
 # Reward
