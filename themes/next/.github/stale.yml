@@ -12,7 +12,6 @@ exemptLabels:
   - pending-reply
   - feature-request
   - enhancement
-  - question
   - documentation
 # Label to use when marking as stale
 staleLabel: stale

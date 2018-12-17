@@ -4,7 +4,8 @@
         inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
         processEscapes: true,
         skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
     });
 </script>
 
@@ -16,4 +17,10 @@
         }
     });
 </script>
-<script type="text/javascript" src="{{ theme.math.mathjax.cdn }}"></script>
+<script src="{{ theme.math.mathjax.cdn }}"></script>
+
+<style>
+.MathJax_Display {
+    overflow: auto hidden;
+}
+</style>

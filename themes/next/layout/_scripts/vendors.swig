@@ -1,6 +1,6 @@
 {# Reset `window.Promise` when it was not a function. #}
 {# IE refers the element whose id is `Promise` as `window.Promise`, this causes Velocity throwing an exception #}
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -24,8 +24,19 @@
   {% set js_vendors.fancybox  = 'fancybox/source/jquery.fancybox.pack.js?v=2.1.5' %}
 {% endif %}
 
-{% if theme.canvas_nest %}
-  {% set js_vendors.canvas_nest  = 'canvas-nest/canvas-nest.min.js' %}
+{% if theme.canvas_nest.enable %}
+  {% if theme.canvas_nest.onmobile %}
+    {% set canvas_nest_uri = url_for(theme.vendors._internal + '/canvas-nest/canvas-nest.min.js')%}
+      {% if theme.vendors.canvas_nest %}
+        {% set canvas_nest_uri = theme.vendors.canvas_nest %}
+      {% endif %}
+  {% else %}
+    {% set canvas_nest_uri = url_for(theme.vendors._internal + '/canvas-nest/canvas-nest-nomobile.min.js')%}
+      {% if theme.vendors.canvas_nest_nomobile %}
+        {% set canvas_nest_uri = theme.vendors.canvas_nest_nomobile %}
+      {% endif %}
+  {% endif %}
+  <script color='{{ theme.canvas_nest.color }}' opacity='{{ theme.canvas_nest.opacity }}' zIndex='{{ theme.canvas_nest.zIndex }}' count='{{ theme.canvas_nest.count }}' src="{{ canvas_nest_uri }}"></script>
 {% endif %}
 
 {% if theme.three_waves %}
@@ -54,8 +65,8 @@
 {% for name, internal in js_vendors %}
   {% set internal_script = url_for(theme.vendors._internal) + '/' + internal %}
   {% if name == 'canvas_ribbon' %}
-    <script id="ribbon" type="text/javascript" size="{{ theme.canvas_ribbon.size }}" alpha="{{ theme.canvas_ribbon.alpha }}"  zIndex="{{theme.canvas_ribbon.zIndex }}" src="{{ theme.vendors[name] | default(internal_script) }}"></script>
+    <script id="ribbon" size="{{ theme.canvas_ribbon.size }}" alpha="{{ theme.canvas_ribbon.alpha }}"  zIndex="{{theme.canvas_ribbon.zIndex }}" src="{{ theme.vendors[name] | default(internal_script) }}"></script>
   {% else %}
-    <script type="text/javascript" src="{{ theme.vendors[name] | default(internal_script) }}"></script>
+    <script src="{{ theme.vendors[name] | default(internal_script) }}"></script>
   {% endif %}
 {% endfor %}
