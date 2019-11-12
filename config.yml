@@ -84,8 +84,8 @@ params:
     avatar: avatar.png
     gravatar: # Gravatar email address, if you enable Gravatar, your avatar config will be overriden
     author: holten
-    author_title: holten blog
-    author_description: Good Good Study, Day Day Up~
+    author_title: Make your own way.
+    author_description: Make your own way.
     location: Shanghai, China
     follow: https://github.com/holtenko
     # Social Links
@@ -106,7 +106,7 @@ params:
       url: favicon.ico
     title: holten # 页面title
     favicon: favicon.ico
-    board: <p>holten blogs~</p> # 公告牌
+    board: <p><b>E-mail:</b> holten.ko@foxmail.com</p><p><b>QQ:</b> 562906376</p><p><b>微信:</b> AllenKO_</p> # 公告牌
 
   # Share
   # weibo,qq,qzone,wechat,tencent,douban,diandian,facebook,twitter,google,linkedin
