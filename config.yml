@@ -6,7 +6,7 @@ footnoteReturnLinkContents: ↩
 hasCJKLanguage: true
 paginate: 7
 enableEmoji: true
-googleAnalytics: ""      # UA-XXXXXXXX-X 
+googleAnalytics: "UA-77346613-2"      # UA-XXXXXXXX-X 
 permalinks:
   posts: /:year/:month/:filename/
 
@@ -63,7 +63,7 @@ menu:
 
 
 params:
-  since: 2017
+  since: 2016
   dateFormatToUse: "2006-01-02"
   enablePostCopyright: false
   # Enable/Disable menu icons
@@ -101,8 +101,8 @@ params:
   site:
     logo:
       enabled: true
-      width: 40
-      height: 40
+      width: 32
+      height: 32
       url: favicon.ico
     title: holten # 页面title
     favicon: favicon.ico
@@ -117,14 +117,14 @@ params:
 
   # Comment
   comment:
-    type:  # type disqus/gitalk/valine 启用哪种评论系统
+    type: gitalk # type disqus/gitalk/valine 启用哪种评论系统
     disqus: your_disqus_name # enter disqus shortname here
     gitalk: # gitalk. https://gitalk.github.io/
-      owner: #必须. GitHub repository 所有者，可以是个人或者组织。
-      admin: #必须. GitHub repository 的所有者和合作者 (对这个 repository 有写权限的用户)。
-      repo:  #必须. GitHub repository.
-      ClientID: #必须. GitHub Application Client ID.
-      ClientSecret: #必须. GitHub Application Client Secret.
+      owner: holtenko #必须. GitHub repository 所有者，可以是个人或者组织。
+      admin: holtenko #必须. GitHub repository 的所有者和合作者 (对这个 repository 有写权限的用户)。
+      repo:  blog #必须. GitHub repository.
+      ClientID: 5d761b19e0061cb39120 #必须. GitHub Application Client ID.
+      ClientSecret: 33d4d53b7737eed611ff8e1250b2f73d456c819c #必须. GitHub Application Client Secret.
     valine: # Valine. https://valine.js.org
       appid: # your leancloud application appid
       appkey: # your leancloud application appkey
@@ -138,7 +138,7 @@ params:
 
   # Donate
   donate:
-    enable: false
+    enable: true
     # 微信打赏
     wechatpay:
       qrcode: donate/wechatpayimg.png
