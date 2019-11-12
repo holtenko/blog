@@ -1,0 +1,29 @@
+name: github pages
+
+on:
+  push:
+    branches:
+    - source
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@source
+      with:
+         submodules: true
+
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@latest
+      with:
+        hugo-version: 'latest'
+
+    - name: Build
+      run: hugo --minify
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@latest
+      env:
+        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        PUBLISH_BRANCH: master
+        PUBLISH_DIR: ./public
