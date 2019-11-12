@@ -145,7 +145,7 @@ params:
       title: 微信支付
     # 支付宝打赏
     alipay:
-      qrcode: donate/alipayimg.png
+      qrcode: donate/alipayimg.jpg
       title: 支付宝
 
   # PV
