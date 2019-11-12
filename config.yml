@@ -1,6 +1,6 @@
-baseURL: https://example.com/
+baseURL: https://holtenko.github.io/blog/
 theme: pure
-title: Pure theme for Hugo
+title: HoltenBlog
 defaultContentLanguage: en  # en/zh/...
 footnoteReturnLinkContents: ↩
 hasCJKLanguage: true
@@ -83,8 +83,8 @@ params:
     enabled: true # Whether to show profile bar
     avatar: avatar.png
     gravatar: # Gravatar email address, if you enable Gravatar, your avatar config will be overriden
-    author: xiaoheiAh
-    author_title: author title
+    author: holten
+    author_title: holten blog
     author_description: Good Good Study, Day Day Up~
     location: Shanghai, China
     follow: https://github.com/holtenko
@@ -104,9 +104,9 @@ params:
       width: 40
       height: 40
       url: favicon.ico
-    title: Hugo # 页面title
+    title: holten # 页面title
     favicon: favicon.ico
-    board: <p>enjoy~</p> # 公告牌
+    board: <p>holten blogs~</p> # 公告牌
 
   # Share
   # weibo,qq,qzone,wechat,tencent,douban,diandian,facebook,twitter,google,linkedin
@@ -151,7 +151,7 @@ params:
   # PV
   pv:
     busuanzi:
-      enable: false # 不蒜子统计
+      enable: true # 不蒜子统计
     leancloud:
       enable: false # leancloud统计
       app_id: # leancloud <AppID>
