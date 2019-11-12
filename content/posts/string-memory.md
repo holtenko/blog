@@ -5,7 +5,7 @@ categories: [Java]
 tags: [Java,内存,String]
 ---
 ### 前言
-之前写过一篇关于[JVM内存区域划分](http://blog.holten.site/2016/04/09/JVM-memory-area/)的文章，但是昨天接到蚂蚁金服的面试，问到JVM相关的内容，解释一下JVM的内存区域划分，这部分答得还不错，但是后来又问了Java里面String存放的位置，之前只记得String是一个不变的量，应该是要存放在常量池里面的，但是后来问到new一个String出来应该是放到哪里的，这个应该是放到堆里面的，后来又问到String的引用是放在什么地方的，当时傻逼的说也是放在堆里面的，现在总结一下：基本类型的变量数据和对象的引用都是放在栈里面的，对象本身放在堆里面，显式的String常量放在常量池，String对象放在堆中。
+之前写过一篇关于[JVM内存区域划分]({{< relref "jvm-memory-area.md" >}})的文章，但是昨天接到蚂蚁金服的面试，问到JVM相关的内容，解释一下JVM的内存区域划分，这部分答得还不错，但是后来又问了Java里面String存放的位置，之前只记得String是一个不变的量，应该是要存放在常量池里面的，但是后来问到new一个String出来应该是放到哪里的，这个应该是放到堆里面的，后来又问到String的引用是放在什么地方的，当时傻逼的说也是放在堆里面的，现在总结一下：基本类型的变量数据和对象的引用都是放在栈里面的，对象本身放在堆里面，显式的String常量放在常量池，String对象放在堆中。
 <!-- more -->
 ### 常量池的说明
 常量池之前是放在方法区里面的，也就是在永久代里面的，从JDK7开始移到了堆里面。这一改变我们可以从oracle的[release version](http://www.oracle.com/technetwork/java/javase/jdk7-relnotes-418459.html)的notes里的** Important RFEs Addressed in JDK 7 **看到。

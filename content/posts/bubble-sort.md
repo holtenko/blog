@@ -1,9 +1,9 @@
 ---
 title: 排序算法之冒泡排序
 date: 2016-05-08 16:43:27
-categories: [Algorithm]
+categories: [算法]
 markup: mmark
-tags: [Algorithm,Sort,排序,算法]
+tags: [排序,算法]
 ---
 ### 算法简介
 冒泡排序是一种最基础也是最简单的排序算法，它是一种**稳定**排序算法，其平均时间复杂度为$$O(n^2)$$，空间复杂度为$$O(1)$$，是一种原地排序算法。

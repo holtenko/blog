@@ -2,12 +2,12 @@
 title: 没事学点设计模式-单例模式
 date: 2018-03-22 14:37:45
 categories: [设计模式]
-tags: [设计模式,单例模式]
+tags: [设计模式]
 ---
 ### 系列回顾
-1. [没事学点设计模式-概览](http://blog.holten.site/2017/09/11/design-pattern-1/)
-2. [没事学点设计模式-工厂模式](http://blog.holten.site/2017/09/29/design-pattern-2/)
-3. [没事学点设计模式-抽象工厂模式](http://blog.holten.site/2018/02/12/design-pattern-3/)
+1. [没事学点设计模式-概览]({{< relref "design-pattern-1.md" >}})
+2. [没事学点设计模式-工厂模式]({{< relref "design-pattern-2.md" >}})
+3. [没事学点设计模式-抽象工厂模式]({{< relref "design-pattern-3.md" >}})
 
 ### 简介
 单例模式（Singleton Pattern）可以说是Java中最简单的设计模式。这种类型的设计模式属于创建型模式，它提供了一种创建一个全局唯一对象的最佳方式，可以避免一个全局使用的对象，尤其是大对象，的频繁创建与销毁。

@@ -1,7 +1,7 @@
 ---
 title: Spring Boot那些事(0)-入门篇
 date: 2017-07-21 16:21:53
-categories: [Spring]
+categories: [Java]
 tags: [Java,Spring Boot]
 ---
 

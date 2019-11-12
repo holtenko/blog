@@ -1,6 +1,6 @@
 baseURL: https://holtenko.github.io/blog/
 theme: pure
-title: HoltenBlog
+title: holten-blog
 defaultContentLanguage: en  # en/zh/...
 footnoteReturnLinkContents: ↩
 hasCJKLanguage: true
@@ -65,7 +65,7 @@ menu:
 params:
   since: 2016
   dateFormatToUse: "2006-01-02"
-  enablePostCopyright: false
+  enablePostCopyright: true
   # Enable/Disable menu icons
   menuIcons:
     enable: true  # 是否启用导航菜单图标

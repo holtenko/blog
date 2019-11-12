@@ -5,7 +5,6 @@ categories: [Shell]
 tags: [Shell,Install]
 ---
 终于在某东做活动新入手了一台air，看身边小伙伴的mac的终端感觉好炫酷，于是乎准备自己也捯饬捯饬，google了一下，发现了osx平台上的终端神器iTerm2和用来代替bash的oh-my-zsh，试了一下发现是真的好使，谁用谁知道。
-![](http://oar4g068j.bkt.clouddn.com/iterm2.png)
 
 <!-- more -->
 
