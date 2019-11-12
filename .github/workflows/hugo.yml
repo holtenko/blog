@@ -14,7 +14,7 @@ jobs:
          submodules: true
 
     - name: Setup Hugo
-      uses: peaceiris/actions-hugo@latest
+      uses: peaceiris/actions-hugo
       with:
         hugo-version: 'latest'
 
@@ -22,7 +22,7 @@ jobs:
       run: hugo --minify
 
     - name: Deploy
-      uses: peaceiris/actions-gh-pages@latest
+      uses: peaceiris/actions-gh-pages
       env:
         ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         PUBLISH_BRANCH: master
