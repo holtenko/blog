@@ -1,0 +1,116 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>没事学点设计模式-工厂模式 - Pure theme for Hugo</title><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui"><meta name=renderer content="webkit"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="black"><meta name=format-detection content="telephone=no,email=no,adress=no"><meta name=theme-color content="#000000"><meta http-equiv=window-target content="_top"><meta name=description content="系列回顾 没事学点设计模式-概览 简介 工厂模式（Factory Pattern）是一种最常用的设计模式。这种类型的设计模式属于创建型模式，它提供了"><meta name=generator content="Hugo 0.59.1 with theme pure"><title>没事学点设计模式-工厂模式 - Pure theme for Hugo</title><link rel=stylesheet href=https://example.com/css/style.css><link rel=stylesheet href=https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css><meta property="og:title" content="没事学点设计模式-工厂模式"><meta property="og:description" content="系列回顾 没事学点设计模式-概览 简介 工厂模式（Factory Pattern）是一种最常用的设计模式。这种类型的设计模式属于创建型模式，它提供了"><meta property="og:type" content="article"><meta property="og:url" content="https://example.com/2017/09/design-pattern-2/"><meta property="article:published_time" content="2017-09-29T09:23:52+00:00"><meta property="article:modified_time" content="2017-09-29T09:23:52+00:00"><meta itemprop=name content="没事学点设计模式-工厂模式"><meta itemprop=description content="系列回顾 没事学点设计模式-概览 简介 工厂模式（Factory Pattern）是一种最常用的设计模式。这种类型的设计模式属于创建型模式，它提供了"><meta itemprop=datePublished content="2017-09-29T09:23:52&#43;00:00"><meta itemprop=dateModified content="2017-09-29T09:23:52&#43;00:00"><meta itemprop=wordCount content="1341"><meta itemprop=keywords content="设计模式,工厂模式,"><meta name=twitter:card content="summary"><meta name=twitter:title content="没事学点设计模式-工厂模式"><meta name=twitter:description content="系列回顾 没事学点设计模式-概览 简介 工厂模式（Factory Pattern）是一种最常用的设计模式。这种类型的设计模式属于创建型模式，它提供了"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head></head><body class=main-center itemscope itemtype=http://schema.org/WebPage><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=slimContent><div class=navbar-header><div class="profile-block text-center"><a id=avatar href=https://github.com/holtenko target=_blank><img class="img-circle img-rotate" src=https://example.com/avatar.png width=200 height=200></a><h2 id=name class="hidden-xs hidden-sm">xiaoheiAh</h2><h3 id=title class="hidden-xs hidden-sm hidden-md">author title</h3><small id=location class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Shanghai, China</small></div><div class=search id=search-form-wrap><form class="search-form sidebar-form"><div class=input-group><input type=text class="search-form-input form-control" placeholder=Search>
+<span class=input-group-btn><button type=submit class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button></span></div><div class=ins-search><div class=ins-search-mask></div><div class=ins-search-container><div class=ins-input-wrapper><input type=text class=ins-search-input placeholder="Type something..." x-webkit-speech>
+<button type=button class="close ins-close ins-selectable" data-dismiss=modal aria-label=Close><span aria-hidden=true>×</span></button></div><div class=ins-section-wrapper><div class=ins-section-container></div></div></div></div></form></div><button class="navbar-toggle collapsed" type=button data-toggle=collapse data-target=#main-navbar aria-controls=main-navbar aria-expanded=false>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span><span class=icon-bar></span><span class=icon-bar></span></button></div><nav id=main-navbar class="collapse navbar-collapse" itemscope itemtype=http://schema.org/SiteNavigationElement role=navigation><ul class="nav navbar-nav main-nav"><li class="menu-item menu-item-home"><a href=/><i class="icon icon-home-fill"></i><span class=menu-title>Home</span></a></li><li class="menu-item menu-item-archives"><a href=/posts><i class="icon icon-archives-fill"></i><span class=menu-title>Archives</span></a></li><li class="menu-item menu-item-categories"><a href=/categories><i class="icon icon-folder"></i><span class=menu-title>Categories</span></a></li><li class="menu-item menu-item-tags"><a href=/tags><i class="icon icon-tags"></i><span class=menu-title>Tags</span></a></li><li class="menu-item menu-item-about"><a href=/about><i class="icon icon-cup-fill"></i><span class=menu-title>About</span></a></li></ul></nav></div></header><aside class=sidebar itemscope itemtype=http://schema.org/WPSideBar><div class=slimContent><div class=widget><h3 class=widget-title>Board</h3><div class=widget-body><div id=board><div class=content><p>enjoy~</p></div></div></div></div><div class=widget><h3 class=widget-title>Categories</h3><div class=widget-body><ul class=category-list><li class=category-list-item><a href=https://example.com/categories/algorithm/ class=category-list-link>algorithm</a><span class=category-list-count>1</span></li><li class=category-list-item><a href=https://example.com/categories/basic/ class=category-list-link>basic</a><span class=category-list-count>1</span></li><li class=category-list-item><a href=https://example.com/categories/git/ class=category-list-link>git</a><span class=category-list-count>1</span></li><li class=category-list-item><a href=https://example.com/categories/java/ class=category-list-link>java</a><span class=category-list-count>7</span></li><li class=category-list-item><a href=https://example.com/categories/shell/ class=category-list-link>shell</a><span class=category-list-count>1</span></li><li class=category-list-item><a href=https://example.com/categories/spring/ class=category-list-link>spring</a><span class=category-list-count>1</span></li><li class=category-list-item><a href=https://example.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/ class=category-list-link>设计模式</a><span class=category-list-count>3</span></li></ul></div></div><div class=widget><h3 class=widget-title>Tags</h3><div class=widget-body><ul class=tag-list><li class=tag-list-item><a href=https://example.com/tags/algorithm/ class=tag-list-link>algorithm</a><span class=tag-list-count>1</span></li><li class=tag-list-item><a href=https://example.com/tags/git/ class=tag-list-link>git</a><span class=tag-list-count>1</span></li><li class=tag-list-item><a href=https://example.com/tags/install/ class=tag-list-link>install</a><span class=tag-list-count>3</span></li><li class=tag-list-item><a href=https://example.com/tags/java/ class=tag-list-link>java</a><span class=tag-list-count>8</span></li><li class=tag-list-item><a href=https://example.com/tags/jdk/ class=tag-list-link>jdk</a><span class=tag-list-count>1</span></li><li class=tag-list-item><a href=https://example.com/tags/jvm/ class=tag-list-link>jvm</a><span class=tag-list-count>2</span></li><li class=tag-list-item><a href=https://example.com/tags/library/ class=tag-list-link>library</a><span class=tag-list-count>1</span></li><li class=tag-list-item><a href=https://example.com/tags/plugin/ class=tag-list-link>plugin</a><span class=tag-list-count>1</span></li><li class=tag-list-item><a href=https://example.com/tags/rxtx/ class=tag-list-link>rxtx</a><span class=tag-list-count>1</span></li><li class=tag-list-item><a href=https://example.com/tags/shell/ class=tag-list-link>shell</a><span class=tag-list-count>1</span></li><li class=tag-list-item><a href=https://example.com/tags/sort/ class=tag-list-link>sort</a><span class=tag-list-count>1</span></li><li class=tag-list-item><a href=https://example.com/tags/spring-boot/ class=tag-list-link>spring-boot</a><span class=tag-list-count>1</span></li><li class=tag-list-item><a href=https://example.com/tags/string/ class=tag-list-link>string</a><span class=tag-list-count>1</span></li><li class=tag-list-item><a href=https://example.com/tags/thread/ class=tag-list-link>thread</a><span class=tag-list-count>1</span></li><li class=tag-list-item><a href=https://example.com/tags/%E5%86%85%E5%AD%98/ class=tag-list-link>内存</a><span class=tag-list-count>3</span></li><li class=tag-list-item><a href=https://example.com/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/ class=tag-list-link>单例模式</a><span class=tag-list-count>1</span></li><li class=tag-list-item><a href=https://example.com/tags/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/ class=tag-list-link>工厂模式</a><span class=tag-list-count>1</span></li><li class=tag-list-item><a href=https://example.com/tags/%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/ class=tag-list-link>抽象工厂模式</a><span class=tag-list-count>1</span></li><li class=tag-list-item><a href=https://example.com/tags/%E6%8E%92%E5%BA%8F/ class=tag-list-link>排序</a><span class=tag-list-count>1</span></li><li class=tag-list-item><a href=https://example.com/tags/%E7%AE%97%E6%B3%95/ class=tag-list-link>算法</a><span class=tag-list-count>1</span></li><li class=tag-list-item><a href=https://example.com/tags/%E7%BA%BF%E7%A8%8B/ class=tag-list-link>线程</a><span class=tag-list-count>1</span></li><li class=tag-list-item><a href=https://example.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/ class=tag-list-link>设计模式</a><span class=tag-list-count>4</span></li></ul></div></div></div></aside><aside class="sidebar sidebar-toc collapse" id=collapseToc itemscope itemtype=http://schema.org/WPSideBar><div class=slimContent><nav id=toc class=article-toc><h3 class=toc-title>Catalogue</h3><div class="toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><ul><li><a href=#系列回顾>系列回顾</a></li><li><a href=#简介>简介</a></li><li><a href=#实例>实例</a><ul><li><a href=#简单工厂模式>简单工厂模式</a></li><li><a href=#工厂方法模式>工厂方法模式</a></li></ul></li><li><a href=#本文源码已托管至github-欢迎star>本文源码已托管至GitHub，欢迎Star</a></li></ul></li></ul></li></ul></nav></div></nav></div></aside><main class=main role=main><div class=content><article id=- class="article article-type-" itemscope itemtype=http://schema.org/BlogPosting><div class=article-header><h1 itemprop=name><a class=article-title href=/2017/09/design-pattern-2/>没事学点设计模式-工厂模式</a></h1><div class=article-meta><span class=article-date><i class="icon icon-calendar-check"></i><a href=https://example.com/2017/09/design-pattern-2/ class=article-date><time datetime="2017-09-29 09:23:52 &#43;0000 UTC" itemprop=datePublished>2017-09-29</time></a>
+</span><span class=article-category><i class="icon icon-folder"></i><a class=article-category-link href=/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/>设计模式</a></span>
+<span class=article-tag><i class="icon icon-tags"></i><a class=article-tag-link href=/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/>设计模式</a>
+<a class=article-tag-link href=/tags/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/>工厂模式</a></span>
+<span class=post-comment><i class="icon icon-comment"></i><a href=/2017/09/design-pattern-2/#comments class=article-comment-link>Comments</a></span>
+<span class="post-wordcount hidden-xs" itemprop=wordCount>Word Count:1341words</span>
+<span class="post-readcount hidden-xs" itemprop=timeRequired>Read Count:3minutes</span></div></div><div class="article-entry marked-body" itemprop=articleBody><h3 id=系列回顾>系列回顾</h3><ol><li><a href=http://blog.holten.site/2017/09/11/design-pattern-1/>没事学点设计模式-概览</a></li></ol><h3 id=简介>简介</h3><p>工厂模式（Factory Pattern）是一种最常用的设计模式。这种类型的设计模式属于创建型模式，它提供了一种方便快捷创建对象的最佳方式。</p><p>在工厂模式中，我们在创建对象时不需要向调用方暴露创建对象的具体逻辑流程，并且是通过使用一个共同的接口来指向新创建的对象。工厂模式定义一个创建对象的接口，让其子类自己决定实例化哪一个工厂类，工厂模式使其创建过程延迟到子类进行，用以解决接口选择的问题。
+<strong>举例说明</strong>
+1. 我要买一辆汽车，我可以直接从工厂里面提货，而不用去关心这辆汽车是如何生产出来的，以及这个汽车里面的各种细节是什么样子的。
+2. 我要买一部手机，我也不需要知道手机是怎么制造出来的，我只需要知道我想要iPhoneX还是还是HUAWEI P10，工厂自然会帮我制造出来。</p><p><strong>优点</strong>
+1. 创建一个对象，只要知道其名称就可以了，就比如我只需要知道那款手机叫iPhoneX就可以了；
+2. 扩展性高，如果想增加一个产品，只要扩展一个工厂类就可以了；
+3. 屏蔽具体实现，用户只关心接口即可。</p><p><strong>缺点</strong>
+每增加一个实现时，都需要增加一个具体类和对象实现工厂，使得系统中类的个数成倍增加，在一定程度上增加了系统的复杂度，同时也增加了系统具体类的依赖。</p><p><strong>使用场景</strong>
+1. 日志记录器：记录可能记录到本地文件、远程服务器、打印到终端等，用户只需要知道要记录到哪里说明即可。
+2. 数据库访问：当用户不知道最后系统采用哪一类数据库，以及数据库可能有变化时，现在是Oracle，有可能换到MySQL等，此时只需换方言和驱动就可以。
+3. 设计一个连接服务器的框架，可以通过&rdquo;TCP&rdquo;或者&rdquo;UDP&rdquo;或者其他协议,可以把这些都作为产品类，共同实现一个接口即可。</p><h3 id=实例>实例</h3><p>我们以生产iPhone的生产工厂为例。</p><h4 id=简单工厂模式>简单工厂模式</h4><p>1.首先需要创建一个iphone接口和其实现类：接口iphone，实现类iphone7\iphone8\iphonex；</p><pre><code class=language-java>public interface Iphone {
+    void build();
+}
+</code></pre><pre><code class=language-java>public class Iphone7 implements Iphone {
+    @Override
+    public void build() {
+        System.out.println(&quot;iphone7 get!&quot;);
+    }
+}
+</code></pre><pre><code class=language-java>public class Iphone8 implements Iphone {
+    @Override
+    public void build() {
+        System.out.println(&quot;iphone8 get!&quot;);
+    }
+}
+</code></pre><pre><code class=language-java>public class Iphonex implements Iphone {
+    @Override
+    public void build() {
+        System.out.println(&quot;iphonex get!&quot;);
+    }
+}
+</code></pre><p>2.然后定义工厂类iphoneFactory</p><pre><code class=language-java>public class IphoneFactory {
+    public Iphone getIphone(String iphoneType) {
+        if (iphoneType == null) {
+            return null;
+        }
+        if (iphoneType.equalsIgnoreCase(&quot;iphone7&quot;)) {
+            return new Iphone7();
+        } else if (iphoneType.equalsIgnoreCase(&quot;iphone8&quot;)) {
+            return new Iphone8();
+        } else if (iphoneType.equalsIgnoreCase(&quot;iphonex&quot;)) {
+            return new Iphonex();
+        }
+        return null;
+    }
+}
+</code></pre><p>3.然后就可以随意生产了，比如先来一个iphonex哈哈哈</p><pre><code class=language-java>public class FactoryDemo {
+    public static void main(String[] args) {
+        IphoneFactory iphonefactory = new IphoneFactory();
+        Iphone iphone = iphonefactory.getIphone(&quot;iphonex&quot;);
+        iphone.build();
+    }
+}
+</code></pre><h4 id=工厂方法模式>工厂方法模式</h4><p>1.首先需要创建一个iphone接口和其实现类：接口iphone，实现类iphone7\iphone8\iphonex；</p><pre><code class=language-java>public interface Iphone {
+    void build();
+}
+</code></pre><pre><code class=language-java>public class Iphone7 implements Iphone {
+    @Override
+    public void build() {
+        System.out.println(&quot;iphone7 get!&quot;);
+    }
+}
+</code></pre><pre><code class=language-java>public class Iphone8 implements Iphone {
+    @Override
+    public void build() {
+        System.out.println(&quot;iphone8 get!&quot;);
+    }
+}
+</code></pre><pre><code class=language-java>public class Iphonex implements Iphone {
+    @Override
+    public void build() {
+        System.out.println(&quot;iphonex get!&quot;);
+    }
+}
+</code></pre><p>2.然后定义工厂接口iphoneFactory</p><pre><code class=language-java>public interface IphoneFactory {
+    public Iphone getIphone()；
+}
+</code></pre><p>3.实现工厂接口</p><pre><code class=language-java>public class Iphone7Factory implements IphoneFactory {
+    @Override
+    public Iphone getIphone() {
+        return new Iphone7();
+    }
+}
+</code></pre><pre><code class=language-java>public class Iphone8Factory implements IphoneFactory {
+    @Override
+    public Iphone getIphone() {
+        return new Iphone8();
+    }
+}
+</code></pre><pre><code class=language-java>public class IphonexFactory implements IphoneFactory {
+    @Override
+    public Iphone getIphone() {
+        return new Iphonex();
+    }
+}
+</code></pre><p>3.然后就也可以随意生产了，比如再来一个iphone8</p><pre><code class=language-java>public class FactoryDemo {
+    public static void main(String[] args) {
+        IphoneFactory iphonefactory = new Iphone8Factory();
+        Iphone iphone = iphonefactory.getIphone();
+        iphone.build();
+    }
+}
+</code></pre><h3 id=本文源码已托管至github-欢迎star>本文源码已托管至GitHub，欢迎Star</h3><p><a href=https://github.com/holtenko/DesignPatterns/tree/master/src/Factory>工厂模式源码：https://github.com/holtenko/DesignPatterns/tree/master/src/Factory</a></p></div></article><section id=comments></section></div><nav class="bar bar-footer clearfix" data-stick-bottom><div class=bar-inner><ul class="pager pull-left"><li class=prev><a href=https://example.com/2017/09/design-pattern-1/ title=没事学点设计模式-概览><i class="icon icon-angle-left" aria-hidden=true></i><span>&nbsp;&nbsp;Newer</span></a></li><li class=next><a href=https://example.com/2018/02/design-pattern-3/ title=没事学点设计模式-抽象工厂模式><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden=true></i></a></li><li class=toggle-toc><a class="toggle-btn collapsed" data-toggle=collapse href=#collapseToc aria-expanded=false title=Catalogue role=button><span>[&nbsp;</span><span>Catalogue</span>
+<i class="text-collapsed icon icon-anchor"></i><i class="text-in icon icon-close"></i><span>]</span></a></li></ul><div class=bar-right><div class=share-component data-sites=weibo,qq,wechat,facebook,twitter data-mobile-sites=weibo,qq,qzone></div></div></div></nav></main><footer class=footer itemscope itemtype=http://schema.org/WPFooter><ul class=social-links><li><a href=https://github.com/holtenko target=_blank title=github data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li><li><a href=https://example.com/index.xml target=_blank title=rss data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li></ul><div class=copyright>&copy;2017 -
+2019<div class=publishby>Theme by <a href=https://github.com/xiaoheiAh target=_blank>xiaoheiAh </a>base on<a href=https://github.com/xiaoheiAh/hugo-theme-pure target=_blank> pure</a>.</div></div></footer><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script><script src=https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js></script><script>window.jQuery||document.write('<script src="js/jquery.min.js"><\/script>')</script><script type=text/javascript src=https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js></script><script type=text/javascript src=https://cdn.staticfile.org/highlight.js/9.15.10/languages/rust.min.js></script><script type=text/javascript src=https://cdn.staticfile.org/highlight.js/9.15.10/languages/dockerfile.min.js></script><script>hljs.configure({tabReplace:'    ',classPrefix:''})
+hljs.initHighlightingOnLoad();</script><script type=text/javascript src=https://example.com/js/application.js></script><script type=text/javascript src=https://example.com/js/plugin.js></script><script>(function(window){var INSIGHT_CONFIG={TRANSLATION:{POSTS:'Posts',PAGES:'Pages',CATEGORIES:'Categories',TAGS:'Tags',UNTITLED:'(Untitled)',},ROOT_URL:'https:\/\/example.com\/',CONTENT_URL:'https:\/\/example.com\/searchindex.json ',};window.INSIGHT_CONFIG=INSIGHT_CONFIG;})(window);</script><script type=text/javascript src=https://example.com/js/insight.js></script></body></html>
