@@ -1,4 +1,4 @@
-baseURL: https://holtenko.github.io/blog/
+baseURL: blog/
 theme: pure
 title: holten-blog
 defaultContentLanguage: en  # en/zh/...
