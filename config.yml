@@ -95,7 +95,7 @@ params:
         # weibo: http://weibo.com/{yourid}
         # twitter: https://twitter.com/
         # facebook: /
-        rss: /index.xml
+        rss: index.xml
       link_tooltip: false # enable the social link tooltip, options: true, false
   # Site
   site:
