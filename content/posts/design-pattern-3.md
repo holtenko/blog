@@ -27,8 +27,10 @@ iPhone 8和iPhone X的屏幕和外壳都是不一样的，通过抽象工厂模�
 2. 生成不同操作系统的软件；
 
 ### 实例
+
 1.首先需要创建一个Screen、Shell接口和其实现类：
-```java
+
+```{java}
 public interface Screen {
     void build();
 }
@@ -47,7 +49,8 @@ public class ScreenX implements Screen {
     }
 }
 ```
-```java
+
+```{java}
 public interface Shell {
     void build();
 }
@@ -68,7 +71,8 @@ public class ShellX implements Shell {
 ```
 
 2.然后定义抽象工厂接口IphoneFactory
-```java
+
+```{java}
 public interface IphoneFactory {
     Screen getScreen();
 
@@ -77,7 +81,8 @@ public interface IphoneFactory {
 ```
 
 3.实现相应的工厂
-```java
+
+```{java}
 public class Iphone8Factory implements IphoneFactory {
     @Override
     public Screen getScreen() {
@@ -104,7 +109,8 @@ public class IphoneXFactory implements IphoneFactory {
 ```
 
 4.可以生产了
-```java
+
+```{java}
 public class AbstractFactoryDemo {
 
     public static void main(String[] args) {

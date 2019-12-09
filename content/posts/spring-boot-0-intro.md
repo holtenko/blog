@@ -27,7 +27,7 @@ Spring 4.x里已经可以通过注解来实现配置了，而Spring Boot则把�
 
 5. 简化的Maven配置
 Maven的出现已经可以帮我解决了很多依赖的问题，不用再一个一个jar包去下载导入，但是有没有这么一种感觉，我还是要在pom里面写很多，而且有时候我根本不知道要添加哪个jar包，这一点Spring Boot也想到了，它提供了一系列starter来简化Maven依赖，比如你只需要添加一个`spring-boot-starter-web`，如下，就可添加web开发中常用的依赖包。
-```xml
+```{xml}
 <dependency>
   <groupId>org.springframework.boot</groupId>
   <artifactId>spring-boot-starter-web</artifactId>
@@ -49,7 +49,7 @@ Maven的出现已经可以帮我解决了很多依赖的问题，不用再一个
 
 1. 首先你需要新建一个空的Maven项目，这个就不说了，不会的去面壁；
 2. 添加Spring Boot父依赖，提供相关的默认依赖，指定版本号，如下；
-```xml
+```{xml}
 <parent>
   <groupId>org.springframework.boot</groupId>
   <artifactId>spring-boot-starter-parent</artifactId>
@@ -59,7 +59,7 @@ Maven的出现已经可以帮我解决了很多依赖的问题，不用再一个
 ```
 3. 添加相关starter
 比如这里添加了web支持和security支持：
-```xml
+```{xml}
 <dependency>
   <groupId>org.springframework.boot</groupId>
   <artifactId>spring-boot-starter-security</artifactId>
@@ -70,7 +70,7 @@ Maven的出现已经可以帮我解决了很多依赖的问题，不用再一个
 </dependency>
 ```
 4. 添加编译插件
-```xml
+```{xml}
 <build>
   <plugins>
     <plugin>
@@ -110,7 +110,7 @@ Maven的出现已经可以帮我解决了很多依赖的问题，不用再一个
 12 directories, 6 files
 ```
 我们首先看一下pom.xml，这里只添加了web starter：
-```xml
+```{xml}
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -155,7 +155,7 @@ Maven的出现已经可以帮我解决了很多依赖的问题，不用再一个
 ```
 
 作为简单示例，我们直接在`Springboot0Application.java`中编写代码：
-```java
+```{java}
 package site.holten.springboot0;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

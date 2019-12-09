@@ -7,9 +7,10 @@ tags: [Linux,FTP,Wiki]
 
 ## 安装vsftpd
 
-```shell
+```{shell}
 yum install vsftpd
-``` 
+```
+
 ## 启动/重启/关闭vsftpd服务器
 
 CentOS7 以下：
@@ -37,7 +38,7 @@ CentOS7 以下：
 
 ## 配置vsftpd.conf
 
-```shell
+```{shell}
 anonymous_enable=NO                                  #禁止匿名
 local_enable=YES                                     #允许本地登录
 write_enable=YES                                     #允许写，如需上传，则必须

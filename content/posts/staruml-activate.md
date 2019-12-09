@@ -17,7 +17,7 @@ tags: [Linux,Wiki]
 ## 修改激活代码
 解压之后当前文件夹下有一个新的目录`app`，真正的验证license的代码在`app\src\engine\license-manager.js`，把的这两个方法替换掉。
 
-```JavaScript
+```{javascript}
 checkLicenseValidity () {
     this.validate().then(() => {
       setStatus(this, true)

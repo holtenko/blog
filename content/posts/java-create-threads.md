@@ -18,7 +18,7 @@ tags: [Java,线程,Thread]
 3. 这里我们先让线程输出线程名+start。
 4. 然后每5ms输出线程名+一个递增数。
 
-```java
+```{java}
 /**
  * Created by holten.gao on 2016/10/17.
  */
@@ -48,7 +48,7 @@ public class threadThread extends Thread {
 2. 这里我们先让线程输出线程名+start。
 3. 然后每5ms输出线程名+一个递增数。
 
-```java
+```{java}
 /**
  * Created by holten.gao on 2016/10/17.
  */
@@ -70,7 +70,8 @@ public class runnableThread implements Runnable {
 
 #### 测试结果
 测试代码
-```java
+
+```{java}
 /**
  * Created by holten.gao on 2016/10/17.
  */
@@ -84,9 +85,9 @@ public class Main {
 }
 ```
 
-
 测试结果
-```bash
+
+```{shell}
 threadThread start!
 threadThread 0
 runnableThread start!

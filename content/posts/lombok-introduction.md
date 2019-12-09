@@ -21,7 +21,7 @@ lombok能够达到的效果就是在源码中不需要写一些通用的方法�
 lombok的安装跟一般引用jar包没有什么区别，可以到官网上下载最新的jar包，然后导入到项目里面就好啦。
 
 **Maven添加依赖**
-``` xml
+```{xml}
 <dependencies>
     <dependency>
         <groupId>org.projectlombok</groupId>
@@ -37,7 +37,7 @@ Intellij idea开发的话需要安装Lombok plugin，同时设置 Setting -> Com
 lombok使用过程中主要是靠注解起作用的，官网上的文档里面有所有的注解，这里不一一罗列，只说明其中几个比较常用的。
 #### `@NonNull`: 可以帮助我们避免空指针。
 使用lombok：
-```java
+```{java}
 import lombok.NonNull;
     public class NonNullExample extends Something {
         private String name;  
@@ -48,7 +48,7 @@ import lombok.NonNull;
 }
 ```
 不使用lombok：
-```java
+```{java}
 public class NonNullExample extends Something {
     private String name;  
     public NonNullExample(@NonNull Person person) {
@@ -62,7 +62,7 @@ public class NonNullExample extends Something {
 ```
 #### `@Cleanup`: 自动帮我们调用`close()`方法。
 使用lombok：
-```java
+```{java}
 import lombok.Cleanup;
 import java.io.*;
 public class CleanupExample {
@@ -79,7 +79,7 @@ public class CleanupExample {
 }
 ```
 不使用lombok：
-```java
+```{java}
 import java.io.*;
     public class CleanupExample {
         public static void main(String[] args) throws IOException {
@@ -108,7 +108,7 @@ import java.io.*;
 ```
 #### `@Getter / @Setter`: 自动生成Getter/Setter方法
 使用lombok：
-```java
+```{java}
     import lombok.AccessLevel;
     import lombok.Getter;
     import lombok.Setter;
@@ -118,7 +118,7 @@ import java.io.*;
     }
 ```
 不使用lombok：
-```java
+```{java}
 public class GetterSetterExample {
     private int age = 10;
     private String name;

@@ -8,7 +8,7 @@ tags: [Tools,Wiki,Markdown]
 ## 标题
 在这段文字前加 # 号即可。
 
-```markdown
+```{markdown}
 # 一级标题
 ## 二级标题
 ### 三级标题
@@ -25,7 +25,7 @@ tags: [Tools,Wiki,Markdown]
 
 在文本前加入 > 这种尖括号（大于号）即可.
 
-```markdown
+```{markdown}
 > 例如这样
 ```
 
@@ -42,7 +42,7 @@ tags: [Tools,Wiki,Markdown]
 
 ## 表格
 
-```markdown
+```{markdown}
 | col1          | col2          | col3  |
 | ------------- |:-------------:| -----:|
 |        1      |   centered    |    3  |

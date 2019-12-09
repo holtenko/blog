@@ -6,7 +6,7 @@ tags: [Tools,Mac,Wiki]
 ---
 
 目前，Mac内置的Vim是7.3版本的，而且还缺少很多功能，下面介绍如何通过源码安装更新最新版本的Vim，同时保留系统内置的Vim。
-```shell
+```{shell}
 # 下载Vim源代码
 git clone https://github.com/vim/vim.git
 # 进入源码的src目录
@@ -18,7 +18,7 @@ make
 
 make install
 
-# 卸载的话 make uninstall 
+# 卸载的话 make uninstall
 ```
   
 此时，Vim被安装在了`/usr/local/bin`下，重启终端后，可以通过`which vim`查看。

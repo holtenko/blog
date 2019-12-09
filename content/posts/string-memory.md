@@ -25,7 +25,7 @@ RFE: 6962931
 
 ### String内存位置说明
 1.显式的String常量
-```Java
+```{java}
 String a = "holten";
 String b = "holten";
 ```
@@ -34,7 +34,7 @@ String b = "holten";
 - 此时该字符串的引用在虚拟机栈里面。
 
 2.String对象
-```Java
+```{java}
 String a = new String("holtenObj");
 String b = new String("holtenObj");
 ```
@@ -42,7 +42,7 @@ String b = new String("holtenObj");
 - 第二句执行时，因为常量池中存在holtenObj所以就不再创建新的String对象了，直接在堆里创建new String("holtenObj")对象。
 
 ### 验证一下
-```Java
+```{java}
 /**
  * Created by holten.gao on 2016/8/16.
  */
@@ -59,7 +59,7 @@ public class Main {
 }
 ```
 返回结果：
-```Java
+```{java}
 true
 false
 ```

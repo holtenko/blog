@@ -24,10 +24,12 @@ tags: [Shell,Install]
 
 #### 安装Powerline
 直接在iTerm2里面输入：
-```bash
+
+```{shell}
 sudo easy_install pip
 pip install powerline-status
 ```
+
 安装完成。
 
 #### 安装[字体库](https://github.com/powerline/fonts)

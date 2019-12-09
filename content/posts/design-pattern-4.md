@@ -32,7 +32,8 @@ tags: [设计模式]
 这种方式可以实现懒加载，线程安全，但是会存在效率问题，因为绝大多数情况下是不需要同步加锁的。
 
 **代码如下：**
-```java
+
+```{java}
 public class Singleton {  
     private static Singleton instance;  
     private Singleton (){}  
@@ -42,14 +43,16 @@ public class Singleton {
     }  
     return instance;  
     }  
-} 
+}
 ```
 
 #### 饿汉式
+
 这种方式基于classloader机制避免了线程安全问题，但是实例在类加载时就实例化了，可能会产生垃圾对象。
 
 **代码如下：**
-```java
+
+```{java}
 public class Singleton {  
     private static Singleton instance = new Singleton();  
     private Singleton (){}  
@@ -60,10 +63,12 @@ public class Singleton {
 ```
 
 #### 双重校验式
+
 这种方式采用双重校验锁的机制，可以保证线程安全且可以保证较好的性能。
 
 **代码如下：**
-```java
+
+```{java}
 public class Singleton {  
     private volatile static Singleton singleton;  
     private Singleton (){}  
@@ -77,14 +82,16 @@ public class Singleton {
     }  
     return singleton;  
     }  
-} 
+}
 ```
 
 #### 静态内部类式
+
 这种方式和饿汉式采用相同的机制来保证线程安全，但是通过静态内部类的形式实现了懒加载，避免了垃圾对象的产生。
 
 **代码如下：**
-```java
+
+```{java}
 public class Singleton {  
     private static class SingletonHolder {  
     private static final Singleton INSTANCE = new Singleton();  
@@ -93,14 +100,16 @@ public class Singleton {
     public static final Singleton getInstance() {  
     return SingletonHolder.INSTANCE;  
     }  
-}   
+}
 ```
 
 #### 枚举式
+
 这种方式在实际使用中很少被采用，但是这确实是目前实现单例最好的方式，简洁，自动支持序列化机制，绝对防止多次实例化，也无法通过反射调用构造函数的方式来创建实例。
 
 **代码如下：**
-```java
+
+```{java}
 public enum Singleton {  
     INSTANCE;  
     public void yourMethod() {  

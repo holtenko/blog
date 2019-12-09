@@ -13,7 +13,7 @@ tags: [Java,Spring,Wiki]
 
 ## 如何解决呢？
 可以使用`setter`方法来注入，如下：
-```java
+```{java}
 private static UserService userService；
 
 @Autowired  

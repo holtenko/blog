@@ -14,7 +14,7 @@ web.xml中`<web-app>`标签的元素个数和排序规则是有限制的，大�
 ### 解决方法
 解决其实也很简单，按照要求将各元素排序即可，具体排序如下：
 
-```xml
+```{xml}
 <!--
 The web-app element is the root of the deployment descriptor for
 a web application.

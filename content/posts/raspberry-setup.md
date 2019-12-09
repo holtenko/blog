@@ -41,7 +41,7 @@ tags: [Linux,Raspberry,Wiki]
 1. Java路径：`/usr/lib/jvm/jdk-x-xxx`，具体路径的最后一层可能会有更新。
 2. 配置环境变量`vim /etc/profile`,在文件最后添加如下内容
 
-```shell
+```{shell}
 export JAVA_HOME=/usr/lib/jvm/jdk-x-xxx
 export JRE_HOME=$JAVA_HOME/jre
 export PATH=$PATH:$JAVA_HOME/bin

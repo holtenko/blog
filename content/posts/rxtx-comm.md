@@ -15,35 +15,21 @@ tags: [Java,Library,Rxtx]
 
 RXTX做串口通讯，有一个jar包(RXTXcomm.jar)和一个rxtxSerial.dll(Windows环境下)或者librxtxSerial.so（Linux环境下），因为开发是在Windows上，但是工作是在Linux上，所以两个都用到了。
 
-
-
 **Windows环境下**
 
 文档里是这么写的
 
 > Copy rxtxSerial.dll ---> <JAVA_HOME>\jre\bin
 
-
-
 但是这个做了之后并不能用，会有一些很奇怪的问题，不知道是不是我的Java环境配置有问题还是怎么了，我是把dll文件copy到了C:\Windows\System32，然后一切正常，一直很奇怪，为什么要cp到<JAVA_HOME>\jre\bin呢？求解答！
-
-
 
 **Linux环境下**
 
 > Copy librxtxSerial.so ---> <JAVA_HOME>/jre/lib/i386/
-
 > or
-
 > Copy librxtxSerial.so ---> <JAVA_HOME>/jre/lib/x86_64/
 
-
-
 这个按照文档没问题。
-
-    
-
-    
 
 **小问题**
 
@@ -55,10 +41,7 @@ RXTX做串口通讯，有一个jar包(RXTXcomm.jar)和一个rxtxSerial.dll(Windo
 
 1.查找端口
 
-
-
-```java
-
+```{java}
 /**
 
      * 查找所有可用端口
@@ -93,10 +76,7 @@ RXTX做串口通讯，有一个jar包(RXTXcomm.jar)和一个rxtxSerial.dll(Windo
 
 2.打开端口
 
-
-
-```java
-
+```{java}
     /**
 
      * 打开串口
@@ -167,8 +147,7 @@ RXTX做串口通讯，有一个jar包(RXTXcomm.jar)和一个rxtxSerial.dll(Windo
 
 3.发送数据
 
-```java
-
+```{java}
     /**
 
      * 发送数据
@@ -205,10 +184,7 @@ RXTX做串口通讯，有一个jar包(RXTXcomm.jar)和一个rxtxSerial.dll(Windo
 
 4.读取数据
 
-
-
-```java
-
+```{java}
     /**
 
      * 读取数据
@@ -263,8 +239,7 @@ RXTX做串口通讯，有一个jar包(RXTXcomm.jar)和一个rxtxSerial.dll(Windo
 
 继承SerialPortEventListener然后重写serialEvent,然后再各个对应case里面写代码就好啦。
 
-```java
-
+```{java}
 public class TestExample implements SerialPortEventListener {
 
     @Override
@@ -303,10 +278,7 @@ public class TestExample implements SerialPortEventListener {
 
 2.给串口添加监听器
 
-
-
-```java
-
+```{java}
     /**
 
      * 添加监听器
@@ -344,8 +316,6 @@ public class TestExample implements SerialPortEventListener {
     }
 
 ```
-
-
 
 #### TIP
 

@@ -11,7 +11,7 @@ tags: [设计模式]
 根据GOF所著的《设计模式-可复用的面向对象软件元素》中提到，共有23种设计模式。这些模式可以分为三大类：创建型模式（Creational Patterns）、结构型模式（Structural Patterns）、行为型模式（Behavioral Patterns）。
 <!-- more -->
 
-|模式 | 描述	|细分类型|
+|模式 | 描述 |细分类型|
 | :-------: |:-------|:-----|
 |创建型模式|这些设计模式提供了一种在创建对象的同时隐藏创建逻辑的方式，而不是使用 new 运算符直接实例化对象。这使得程序在判断针对某个给定实例需要创建哪些对象时更加灵活.|[工厂模式（Factory Pattern）]({{< relref "design-pattern-2.md" >}})<br>[抽象工厂模式（Abstract Factory Pattern）]({{< relref "design-pattern-3.md" >}})<br>[单例模式（Singleton Pattern]({{< relref "design-pattern-4.md" >}})<br>建造者模式（Builder Pattern）<br>原型模式（Prototype Pattern）|
 |结构型模式|这些设计模式关注类和对象的组合。继承的概念被用来组合接口和定义组合对象获得新功能的方式。|适配器模式（Adapter Pattern）<br>桥接模式（Bridge Pattern）<br>过滤器模式（Filter、Criteria Pattern）<br>组合模式（Composite Pattern）<br>装饰器模式（Decorator Pattern）<br>外观模式（Facade Pattern）<br>享元模式（Flyweight Pattern）<br>代理模式（Proxy Pattern）|

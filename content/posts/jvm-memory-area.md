@@ -16,7 +16,7 @@ tags: [Java,JVM,内存]
 在Java虚拟机中，堆是可供各个线程共享的运行时内存区域，也是供所有类实例和数组对象分配内存的区域。这块区域随着虚拟机的启动而创建，它的唯一使命就是**存放对象实例**，这块区域也是GC主要关注的地方。
 
 下面的就是我的笔记本上的JVM堆的划分情况，可以看到分为新生代、老年代和永久代，新生代里面有可以分为Eden Space、From Survivor Space和To Survivor Space。
-```{bash}
+```{shell}
 Heap Usage:
 PS Young Generation
 Eden Space:
