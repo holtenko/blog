@@ -33,7 +33,7 @@ public class Example{
 
 Java里是使用可达性分析的方法来实现的。
 
-![](http://oar4g068j.bkt.clouddn.com/GCObject.png)
+![GCObject](https://tva1.sinaimg.cn/large/006tNbRwgy1g9qgmmvaa2j30jg0aw0sq.jpg)
 
 如图所示，就是通过一系列的称为"GC Roots"的对象作为起始点，从这些点向下搜索，搜索的路径称为引用链，当一个对象到达GC Roots没有任何引用链时，就可以证明这个对象是不可用的。那么这个对象就可以被回收了。像图中的Obj1-5都属于存活的对象，但是Obj6-8虽然还存在相互引用，但是已经是可以认为是死掉的对象了。
 

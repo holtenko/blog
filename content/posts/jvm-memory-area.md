@@ -10,7 +10,7 @@ tags: [Java,JVM,内存]
 <!-- more -->
 
 根据《Java虚拟机规范Java SE 7版》和《Java虚拟机规范Java SE 8版》的规定，我们可以划分出如下几个运行时数据区，如下图所示：
-![](http://oar4g068j.bkt.clouddn.com/JVMDataArea.png)
+![JVMDataArea](https://tva1.sinaimg.cn/large/006tNbRwgy1g9qgn92jtlj30iu085glu.jpg)
 
 ### Java堆
 在Java虚拟机中，堆是可供各个线程共享的运行时内存区域，也是供所有类实例和数组对象分配内存的区域。这块区域随着虚拟机的启动而创建，它的唯一使命就是**存放对象实例**，这块区域也是GC主要关注的地方。

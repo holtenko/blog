@@ -8,6 +8,8 @@ tags: [Shell,Install]
 
 <!-- more -->
 
+![iterm2](https://tva1.sinaimg.cn/large/006tNbRwgy1g9qgln5wolj31400p0n4b.jpg)
+
 #### 安装iTerm2
 1. 首先你得先下载一个[iTerm2](http://www.iterm2.com/)。
 2. 怎么在osx上安装不用说了，直接copy。
