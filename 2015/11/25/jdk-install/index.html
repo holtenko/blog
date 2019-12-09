@@ -10,17 +10,17 @@
 <span class="article-read hidden-xs"><i class="icon icon-eye-fill" aria-hidden=true></i><span id=busuanzi_container_page_pv><span id=busuanzi_value_page_pv>0</span></span></span>
 <span class=post-comment><i class="icon icon-comment"></i><a href=/blog/2015/11/25/jdk-install/#comments class=article-comment-link>Comments</a></span>
 <span class="post-wordcount hidden-xs" itemprop=wordCount>Word Count:252words</span>
-<span class="post-readcount hidden-xs" itemprop=timeRequired>Read Count:1minutes</span></div></div><div class="article-entry marked-body js-toc-content" itemprop=articleBody><h4 id=jdk>jdk下载</h4><p>这个到java的<a href=http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html>官方网站</a>下载自己需要的版本就好了，这里下载了jdk1.7版本的，选择下载了rpm包jdk-7u79-linux-x64.rpm。</p><h4 id=rpm>rpm安装</h4><pre><code class=language-{bash} data-lang={bash}>rpm -ivh jdk安装包的目录/jdk-7u79-linux-x64.rpm
+<span class="post-readcount hidden-xs" itemprop=timeRequired>Read Count:1minutes</span></div></div><div class="article-entry marked-body js-toc-content" itemprop=articleBody><h4 id=jdk>jdk下载</h4><p>这个到java的<a href=http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html>官方网站</a>下载自己需要的版本就好了，这里下载了jdk1.7版本的，选择下载了rpm包jdk-7u79-linux-x64.rpm。</p><h4 id=rpm>rpm安装</h4><pre><code class=language-{shell} data-lang={shell}>rpm -ivh jdk安装包的目录/jdk-7u79-linux-x64.rpm
 </code></pre><p><em><strong>解释一下：</strong></em>
 -i,&ndash;install 表示安装软件包 install package(s)
 -v,&ndash;verbose 表示安装过程中输出软件包更多的信息 provide more detailed output
--h,&ndash;hash 表示显示安装进度 print hash marks as package installs (good with -v)</p><h4 id=heading>配置环境变量</h4><pre><code class=language-{bash} data-lang={bash}>vim /etc/profile
-</code></pre><p>在最后添加</p><pre><code class=language-{bash} data-lang={bash}>export JAVA_HOME=/usr/java/jdk1.7.0_79
+-h,&ndash;hash 表示显示安装进度 print hash marks as package installs (good with -v)</p><h4 id=heading>配置环境变量</h4><pre><code class=language-{shell} data-lang={shell}>vim /etc/profile
+</code></pre><p>在最后添加</p><pre><code class=language-{shell} data-lang={shell}>export JAVA_HOME=/usr/java/jdk1.7.0_79
 export JRE_HOME=$JAVA_HOME/jre
 export PATH=$PATH:$JAVA_HOME/bin
 export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib
-</code></pre><p>保存文件，然后执行以下命令使配置文件生效即可。</p><pre><code class=language-{bash} data-lang={bash}>source /etc/profile
-</code></pre><p>最后测试一下</p><pre><code class=language-{bash} data-lang={bash}># java -version
+</code></pre><p>保存文件，然后执行以下命令使配置文件生效即可。</p><pre><code class=language-{shell} data-lang={shell}>source /etc/profile
+</code></pre><p>最后测试一下</p><pre><code class=language-{shell} data-lang={shell}># java -version
 java version &quot;1.7.0_79&quot;
 Java(TM) SE Runtime Environment (build 1.7.0_79-b15)
 Java HotSpot(TM) 64-Bit Server VM (build 24.79-b02, mixed mode)

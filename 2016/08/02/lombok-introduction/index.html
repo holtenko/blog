@@ -9,91 +9,91 @@
 <span class="article-read hidden-xs"><i class="icon icon-eye-fill" aria-hidden=true></i><span id=busuanzi_container_page_pv><span id=busuanzi_value_page_pv>0</span></span></span>
 <span class=post-comment><i class="icon icon-comment"></i><a href=/blog/2016/08/02/lombok-introduction/#comments class=article-comment-link>Comments</a></span>
 <span class="post-wordcount hidden-xs" itemprop=wordCount>Word Count:1238words</span>
-<span class="post-readcount hidden-xs" itemprop=timeRequired>Read Count:3minutes</span></div></div><div class="article-entry marked-body js-toc-content" itemprop=articleBody><h3 id=lombok>lombok简介</h3><p>lombok是暑假来到公司实习的时候发现的一个非常好用的小工具，刚见到的时候就感觉非常惊艳，有一种相见恨晚的感觉，用了一段时间之后感觉的确挺不错，所以特此来推荐一下。</p><p><a href=https://projectlombok.org/>lombok的官方地址：https://projectlombok.org/</a></p><p><a href=https://github.com/rzwitserloot/lombok>lombok的Github地址：https://github.com/rzwitserloot/lombok</a></p><p>那么lombok到底是个什么呢，lombok是一个可以通过简单的注解的形式来帮助我们简化消除一些必须有但显得很臃肿的 Java 代码的工具，简单来说，比如我们新建了一个类，然后在其中写了几个字段，然后通常情况下我们需要手动去建立getter和setter方法啊，构造函数啊之类的，lombok的作用就是为了省去我们手动创建这些代码的麻烦，它能够在我们编译源码的时候自动帮我们生成这些方法。</p><p>lombok能够达到的效果就是在源码中不需要写一些通用的方法，但是在编译生成的字节码文件中会帮我们生成这些方法，这就是lombok的神奇作用。</p><p>虽然有人可能会说IDE里面都自带自动生成这些方法的功能，但是使用lombok会使你的代码看起来更加简洁，写起来也更加方便。</p><h3 id=lombok1>lombok安装</h3><p>lombok的安装跟一般引用jar包没有什么区别，可以到官网上下载最新的jar包，然后导入到项目里面就好啦。</p><p><strong>Maven添加依赖</strong></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=color:#f92672>&lt;dependencies</span><span style=color:#f92672>&gt;</span>
-    <span style=color:#f92672>&lt;dependency</span><span style=color:#f92672>&gt;</span>
-        <span style=color:#f92672>&lt;groupId</span><span style=color:#f92672>&gt;</span>org.projectlombok<span style=color:#f92672>&lt;/groupId&gt;</span>
-        <span style=color:#f92672>&lt;artifactId</span><span style=color:#f92672>&gt;</span>lombok<span style=color:#f92672>&lt;/artifactId&gt;</span>
-        <span style=color:#f92672>&lt;version</span><span style=color:#f92672>&gt;</span>1.16.10<span style=color:#f92672>&lt;/version&gt;</span>
-    <span style=color:#f92672>&lt;/dependency&gt;</span>
-<span style=color:#f92672>&lt;/dependencies&gt;</span>
-</code></pre></div><p>Intellij idea开发的话需要安装Lombok plugin，同时设置 Setting -> Compiler -> Annotation Processors -> Enable annotation processing勾选。</p><h3 id=lombok2>lombok使用</h3><p>lombok使用过程中主要是靠注解起作用的，官网上的文档里面有所有的注解，这里不一一罗列，只说明其中几个比较常用的。</p><h4 id=nonnull-><code>@NonNull</code>: 可以帮助我们避免空指针。</h4><p>使用lombok：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> lombok.NonNull<span style=color:#f92672>;</span>
-    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>NonNullExample</span> <span style=color:#66d9ef>extends</span> Something <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>private</span> String name<span style=color:#f92672>;</span>  
-        <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>NonNullExample</span><span style=color:#f92672>(</span><span style=color:#a6e22e>@NonNull</span> Person person<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>super</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Hello&#34;</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span>
-        <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>name</span> <span style=color:#f92672>=</span> person<span style=color:#f92672>.</span><span style=color:#a6e22e>getName</span><span style=color:#f92672>(</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>不使用lombok：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>NonNullExample</span> <span style=color:#66d9ef>extends</span> Something <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>private</span> String name<span style=color:#f92672>;</span>  
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>NonNullExample</span><span style=color:#f92672>(</span><span style=color:#a6e22e>@NonNull</span> Person person<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>super</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Hello&#34;</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span>
-        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>person <span style=color:#f92672>=</span><span style=color:#f92672>=</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> NullPointerException<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;person&#34;</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span>
-        <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>name</span> <span style=color:#f92672>=</span> person<span style=color:#f92672>.</span><span style=color:#a6e22e>getName</span><span style=color:#f92672>(</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><h4 id=cleanup-close><code>@Cleanup</code>: 自动帮我们调用<code>close()</code>方法。</h4><p>使用lombok：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> lombok.Cleanup<span style=color:#f92672>;</span>
-<span style=color:#f92672>import</span> java.io.*<span style=color:#f92672>;</span>
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>CleanupExample</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[</span><span style=color:#f92672>]</span> args<span style=color:#f92672>)</span> <span style=color:#66d9ef>throws</span> IOException <span style=color:#f92672>{</span>
-        <span style=color:#a6e22e>@Cleanup</span> InputStream in <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> FileInputStream<span style=color:#f92672>(</span>args<span style=color:#f92672>[</span>0<span style=color:#f92672>]</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span>
-        <span style=color:#a6e22e>@Cleanup</span> OutputStream out <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> FileOutputStream<span style=color:#f92672>(</span>args<span style=color:#f92672>[</span>1<span style=color:#f92672>]</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span>
-        <span style=color:#66d9ef>byte</span><span style=color:#f92672>[</span><span style=color:#f92672>]</span> b <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>byte</span><span style=color:#f92672>[</span>10000<span style=color:#f92672>]</span><span style=color:#f92672>;</span>
-        <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>true</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-            <span style=color:#66d9ef>int</span> r <span style=color:#f92672>=</span> in<span style=color:#f92672>.</span><span style=color:#a6e22e>read</span><span style=color:#f92672>(</span>b<span style=color:#f92672>)</span><span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>r <span style=color:#f92672>=</span><span style=color:#f92672>=</span> <span style=color:#f92672>-</span>1<span style=color:#f92672>)</span> <span style=color:#66d9ef>break</span><span style=color:#f92672>;</span>
-            out<span style=color:#f92672>.</span><span style=color:#a6e22e>write</span><span style=color:#f92672>(</span>b<span style=color:#f92672>,</span> 0<span style=color:#f92672>,</span> r<span style=color:#f92672>)</span><span style=color:#f92672>;</span>
-        <span style=color:#f92672>}</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>不使用lombok：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> java.io.*<span style=color:#f92672>;</span>
-    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>CleanupExample</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[</span><span style=color:#f92672>]</span> args<span style=color:#f92672>)</span> <span style=color:#66d9ef>throws</span> IOException <span style=color:#f92672>{</span>
-            InputStream in <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> FileInputStream<span style=color:#f92672>(</span>args<span style=color:#f92672>[</span>0<span style=color:#f92672>]</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span>
-            <span style=color:#66d9ef>try</span> <span style=color:#f92672>{</span>
-                OutputStream out <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> FileOutputStream<span style=color:#f92672>(</span>args<span style=color:#f92672>[</span>1<span style=color:#f92672>]</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span>
-                <span style=color:#66d9ef>try</span> <span style=color:#f92672>{</span>
-                    <span style=color:#66d9ef>byte</span><span style=color:#f92672>[</span><span style=color:#f92672>]</span> b <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>byte</span><span style=color:#f92672>[</span>10000<span style=color:#f92672>]</span><span style=color:#f92672>;</span>
-                    <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>true</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                    <span style=color:#66d9ef>int</span> r <span style=color:#f92672>=</span> in<span style=color:#f92672>.</span><span style=color:#a6e22e>read</span><span style=color:#f92672>(</span>b<span style=color:#f92672>)</span><span style=color:#f92672>;</span>
-                    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>r <span style=color:#f92672>=</span><span style=color:#f92672>=</span> <span style=color:#f92672>-</span>1<span style=color:#f92672>)</span> <span style=color:#66d9ef>break</span><span style=color:#f92672>;</span>
-                    out<span style=color:#f92672>.</span><span style=color:#a6e22e>write</span><span style=color:#f92672>(</span>b<span style=color:#f92672>,</span> 0<span style=color:#f92672>,</span> r<span style=color:#f92672>)</span><span style=color:#f92672>;</span>
-                    <span style=color:#f92672>}</span>
-                <span style=color:#f92672>}</span> <span style=color:#66d9ef>finally</span> <span style=color:#f92672>{</span>
-                    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>out <span style=color:#f92672>!</span><span style=color:#f92672>=</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                        out<span style=color:#f92672>.</span><span style=color:#a6e22e>close</span><span style=color:#f92672>(</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span>
-                    <span style=color:#f92672>}</span>
-                <span style=color:#f92672>}</span>
-            <span style=color:#f92672>}</span> <span style=color:#66d9ef>finally</span> <span style=color:#f92672>{</span>
-                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>in <span style=color:#f92672>!</span><span style=color:#f92672>=</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-                in<span style=color:#f92672>.</span><span style=color:#a6e22e>close</span><span style=color:#f92672>(</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span>
-            <span style=color:#f92672>}</span>
-        <span style=color:#f92672>}</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><h4 id=getter--setter-gettersetter><code>@Getter / @Setter</code>: 自动生成Getter/Setter方法</h4><p>使用lombok：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>    <span style=color:#f92672>import</span> lombok.AccessLevel<span style=color:#f92672>;</span>
-    <span style=color:#f92672>import</span> lombok.Getter<span style=color:#f92672>;</span>
-    <span style=color:#f92672>import</span> lombok.Setter<span style=color:#f92672>;</span>
-    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>GetterSetterExample</span> <span style=color:#f92672>{</span>
-        <span style=color:#a6e22e>@Getter</span> <span style=color:#a6e22e>@Setter</span> <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> age <span style=color:#f92672>=</span> 10<span style=color:#f92672>;</span>
-        <span style=color:#a6e22e>@Setter</span><span style=color:#f92672>(</span>AccessLevel<span style=color:#f92672>.</span><span style=color:#a6e22e>PROTECTED</span><span style=color:#f92672>)</span> <span style=color:#66d9ef>private</span> String name<span style=color:#f92672>;</span>
-    <span style=color:#f92672>}</span>
-</code></pre></div><p>不使用lombok：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>GetterSetterExample</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> age <span style=color:#f92672>=</span> 10<span style=color:#f92672>;</span>
-    <span style=color:#66d9ef>private</span> String name<span style=color:#f92672>;</span>
-    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>getAge</span><span style=color:#f92672>(</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>return</span> age<span style=color:#f92672>;</span>
-    <span style=color:#f92672>}</span>
-    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>setAge</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> age<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>age</span> <span style=color:#f92672>=</span> age<span style=color:#f92672>;</span>
-    <span style=color:#f92672>}</span>
-    <span style=color:#66d9ef>protected</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>setName</span><span style=color:#f92672>(</span>String name<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>name</span> <span style=color:#f92672>=</span> name<span style=color:#f92672>;</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><h4 id=noargsconstructor-><code>@NoArgsConstructor</code>: 自动生成无参数构造函数。</h4><h4 id=allargsconstructor-><code>@AllArgsConstructor</code>: 自动生成全参数构造函数。</h4><h4 id=data-tostring-equalsandhashcode-getterfinalsetterrequiredargsconstructor><code>@Data</code>: 自动为所有字段添加@ToString, @EqualsAndHashCode, @Getter方法，为非final字段添加@Setter,和@RequiredArgsConstructor!</h4><p><em><strong>还有其他一些比如自动生成日志对象等等之类的注解可以到官方网站去了解，就不一一列举了。</strong></em></p><p><strong><a href=https://projectlombok.org/features/index.html>官方文档https://projectlombok.org/features/index.html</a></strong></p></div><div class=article-footer></div></article><section id=comments></section></div><nav class="bar bar-footer clearfix" data-stick-bottom><div class=bar-inner><ul class="pager pull-left"><li class=prev><a href=https://holtenko.github.io/blog/2016/05/08/bubble-sort/ title=排序算法之冒泡排序><i class="icon icon-angle-left" aria-hidden=true></i><span>&nbsp;&nbsp;Older</span></a></li><li class=next><a href=https://holtenko.github.io/blog/2016/08/16/string-memory/ title=Java中字符串内存位置浅析><span>Newer&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden=true></i></a></li><li class=toggle-toc><a class="toggle-btn collapsed" data-toggle=collapse href=#collapseToc aria-expanded=false title=Catalogue role=button><span>[&nbsp;</span><span>Catalogue</span>
+<span class="post-readcount hidden-xs" itemprop=timeRequired>Read Count:3minutes</span></div></div><div class="article-entry marked-body js-toc-content" itemprop=articleBody><h3 id=lombok>lombok简介</h3><p>lombok是暑假来到公司实习的时候发现的一个非常好用的小工具，刚见到的时候就感觉非常惊艳，有一种相见恨晚的感觉，用了一段时间之后感觉的确挺不错，所以特此来推荐一下。</p><p><a href=https://projectlombok.org/>lombok的官方地址：https://projectlombok.org/</a></p><p><a href=https://github.com/rzwitserloot/lombok>lombok的Github地址：https://github.com/rzwitserloot/lombok</a></p><p>那么lombok到底是个什么呢，lombok是一个可以通过简单的注解的形式来帮助我们简化消除一些必须有但显得很臃肿的 Java 代码的工具，简单来说，比如我们新建了一个类，然后在其中写了几个字段，然后通常情况下我们需要手动去建立getter和setter方法啊，构造函数啊之类的，lombok的作用就是为了省去我们手动创建这些代码的麻烦，它能够在我们编译源码的时候自动帮我们生成这些方法。</p><p>lombok能够达到的效果就是在源码中不需要写一些通用的方法，但是在编译生成的字节码文件中会帮我们生成这些方法，这就是lombok的神奇作用。</p><p>虽然有人可能会说IDE里面都自带自动生成这些方法的功能，但是使用lombok会使你的代码看起来更加简洁，写起来也更加方便。</p><h3 id=lombok1>lombok安装</h3><p>lombok的安装跟一般引用jar包没有什么区别，可以到官网上下载最新的jar包，然后导入到项目里面就好啦。</p><p><strong>Maven添加依赖</strong></p><pre><code class=language-{xml} data-lang={xml}>&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+        &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+        &lt;version&gt;1.16.10&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre><p>Intellij idea开发的话需要安装Lombok plugin，同时设置 Setting -> Compiler -> Annotation Processors -> Enable annotation processing勾选。</p><h3 id=lombok2>lombok使用</h3><p>lombok使用过程中主要是靠注解起作用的，官网上的文档里面有所有的注解，这里不一一罗列，只说明其中几个比较常用的。</p><h4 id=nonnull-><code>@NonNull</code>: 可以帮助我们避免空指针。</h4><p>使用lombok：</p><pre><code class=language-{java} data-lang={java}>import lombok.NonNull;
+    public class NonNullExample extends Something {
+        private String name;  
+        public NonNullExample(@NonNull Person person) {
+        super(&quot;Hello&quot;);
+        this.name = person.getName();
+    }
+}
+</code></pre><p>不使用lombok：</p><pre><code class=language-{java} data-lang={java}>public class NonNullExample extends Something {
+    private String name;  
+    public NonNullExample(@NonNull Person person) {
+        super(&quot;Hello&quot;);
+        if (person == null) {
+            throw new NullPointerException(&quot;person&quot;);
+        }
+        this.name = person.getName();
+    }
+}
+</code></pre><h4 id=cleanup-close><code>@Cleanup</code>: 自动帮我们调用<code>close()</code>方法。</h4><p>使用lombok：</p><pre><code class=language-{java} data-lang={java}>import lombok.Cleanup;
+import java.io.*;
+public class CleanupExample {
+    public static void main(String[] args) throws IOException {
+        @Cleanup InputStream in = new FileInputStream(args[0]);
+        @Cleanup OutputStream out = new FileOutputStream(args[1]);
+        byte[] b = new byte[10000];
+        while (true) {
+            int r = in.read(b);
+            if (r == -1) break;
+            out.write(b, 0, r);
+        }
+    }
+}
+</code></pre><p>不使用lombok：</p><pre><code class=language-{java} data-lang={java}>import java.io.*;
+    public class CleanupExample {
+        public static void main(String[] args) throws IOException {
+            InputStream in = new FileInputStream(args[0]);
+            try {
+                OutputStream out = new FileOutputStream(args[1]);
+                try {
+                    byte[] b = new byte[10000];
+                    while (true) {
+                    int r = in.read(b);
+                    if (r == -1) break;
+                    out.write(b, 0, r);
+                    }
+                } finally {
+                    if (out != null) {
+                        out.close();
+                    }
+                }
+            } finally {
+                if (in != null) {
+                in.close();
+            }
+        }
+    }
+}
+</code></pre><h4 id=getter--setter-gettersetter><code>@Getter / @Setter</code>: 自动生成Getter/Setter方法</h4><p>使用lombok：</p><pre><code class=language-{java} data-lang={java}>    import lombok.AccessLevel;
+    import lombok.Getter;
+    import lombok.Setter;
+    public class GetterSetterExample {
+        @Getter @Setter private int age = 10;
+        @Setter(AccessLevel.PROTECTED) private String name;
+    }
+</code></pre><p>不使用lombok：</p><pre><code class=language-{java} data-lang={java}>public class GetterSetterExample {
+    private int age = 10;
+    private String name;
+    public int getAge() {
+        return age;
+    }
+    public void setAge(int age) {
+        this.age = age;
+    }
+    protected void setName(String name) {
+        this.name = name;
+    }
+}
+</code></pre><h4 id=noargsconstructor-><code>@NoArgsConstructor</code>: 自动生成无参数构造函数。</h4><h4 id=allargsconstructor-><code>@AllArgsConstructor</code>: 自动生成全参数构造函数。</h4><h4 id=data-tostring-equalsandhashcode-getterfinalsetterrequiredargsconstructor><code>@Data</code>: 自动为所有字段添加@ToString, @EqualsAndHashCode, @Getter方法，为非final字段添加@Setter,和@RequiredArgsConstructor!</h4><p><em><strong>还有其他一些比如自动生成日志对象等等之类的注解可以到官方网站去了解，就不一一列举了。</strong></em></p><p><strong><a href=https://projectlombok.org/features/index.html>官方文档https://projectlombok.org/features/index.html</a></strong></p></div><div class=article-footer></div></article><section id=comments></section></div><nav class="bar bar-footer clearfix" data-stick-bottom><div class=bar-inner><ul class="pager pull-left"><li class=prev><a href=https://holtenko.github.io/blog/2016/05/08/bubble-sort/ title=排序算法之冒泡排序><i class="icon icon-angle-left" aria-hidden=true></i><span>&nbsp;&nbsp;Older</span></a></li><li class=next><a href=https://holtenko.github.io/blog/2016/08/16/string-memory/ title=Java中字符串内存位置浅析><span>Newer&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden=true></i></a></li><li class=toggle-toc><a class="toggle-btn collapsed" data-toggle=collapse href=#collapseToc aria-expanded=false title=Catalogue role=button><span>[&nbsp;</span><span>Catalogue</span>
 <i class="text-collapsed icon icon-anchor"></i><i class="text-in icon icon-close"></i><span>]</span></a></li></ul><button type=button class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle=modal data-target=#donateModal><span>$</span></button><div class=bar-right><div class=share-component data-sites=weibo,qq,wechat,facebook,twitter data-mobile-sites=weibo,qq,qzone></div></div></div></nav><div class="modal modal-center modal-small modal-xs-full fade" id=donateModal tabindex=-1 role=dialog><div class=modal-dialog role=document><div class="modal-content donate"><button type=button class=close data-dismiss=modal aria-label=Close><span aria-hidden=true>&#215;</span></button><div class=modal-body><div class=donate-box><div class=donate-head><p>Maybe you could buy me a cup of coffee.</p></div><div class=tab-content><div role=tabpanel class="tab-pane fade active in" id=alipay><div class=donate-payimg><img src=https://holtenko.github.io/blog/donate/alipayimg.jpg alt="Scan Qrcode" title=Scan></div><p class="text-muted mv">Scan this qrcode</p><p class=text-grey>Open alipay app scan this qrcode, buy me a coffee!</p></div><div role=tabpanel class="tab-pane fade" id=wechatpay><div class=donate-payimg><img src=https://holtenko.github.io/blog/donate/wechatpayimg.png alt="Scan Qrcode" title=Scan></div><p class="text-muted mv">Scan this qrcode</p><p class=text-grey>Open wechat app scan this qrcode, buy me a coffee!</p></div></div><div class=donate-footer><ul class="nav nav-tabs nav-justified" role=tablist><li role=presentation class=active><a href=#alipay id=alipay-tab role=tab data-toggle=tab aria-controls=alipay aria-expanded=true><i class="icon icon-alipay"></i>alipay</a></li><li role=presentation><a href=#wechatpay role=tab id=wechatpay-tab data-toggle=tab aria-controls=wechatpay aria-expanded=false><i class="icon icon-wepay"></i>wechat payment</a></li></ul></div></div></div></div></div></div></main><footer class=footer itemscope itemtype=http://schema.org/WPFooter><ul class=social-links><li><a href=https://github.com/holtenko target=_blank title=github data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li><li><a href=https://holtenko.github.io/blog/index.xml target=_blank title=rss data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li></ul><div class=copyright>&copy;2016 -
 2019<div class=publishby>Theme by <a href=https://github.com/xiaoheiAh target=_blank>xiaoheiAh </a>base on<a href=https://github.com/xiaoheiAh/hugo-theme-pure target=_blank> pure</a>.</div></div></footer><script src=https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js></script><script>window.jQuery||document.write('<script src="js/jquery.min.js"><\/script>')</script><script type=text/javascript src=https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js></script><script type=text/javascript src=https://cdn.staticfile.org/highlight.js/9.15.10/languages/rust.min.js></script><script type=text/javascript src=https://cdn.staticfile.org/highlight.js/9.15.10/languages/dockerfile.min.js></script><script>hljs.configure({tabReplace:'    ',classPrefix:''})
 hljs.initHighlightingOnLoad();</script><script type=text/javascript src=https://holtenko.github.io/blog/js/application.js></script><script type=text/javascript src=https://holtenko.github.io/blog/js/plugin.js></script><script>(function(window){var INSIGHT_CONFIG={TRANSLATION:{POSTS:'Posts',PAGES:'Pages',CATEGORIES:'Categories',TAGS:'Tags',UNTITLED:'(Untitled)',},ROOT_URL:'https:\/\/holtenko.github.io\/blog',CONTENT_URL:'https:\/\/holtenko.github.io\/blog\/searchindex.json ',};window.INSIGHT_CONFIG=INSIGHT_CONFIG;})(window);</script><script type=text/javascript src=https://holtenko.github.io/blog/js/insight.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js></script><script>tocbot.init({tocSelector:'.js-toc',contentSelector:'.js-toc-content',headingSelector:'h1, h2, h3',hasInnerContainers:true,});</script><script async src=https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script><script src=https://cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js></script><script src=https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js></script><script type=text/javascript>var gitalk=new Gitalk({clientID:'5d761b19e0061cb39120',clientSecret:'33d4d53b7737eed611ff8e1250b2f73d456c819c',repo:'blog',owner:'holtenko',admin:['holtenko'],id:md5(location.pathname),distractionFreeMode:true});gitalk.render('comments');</script><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-77346613-2','auto');ga('send','pageview');}</script><script async src=https://www.google-analytics.com/analytics.js></script></body></html>

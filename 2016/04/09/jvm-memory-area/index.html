@@ -11,7 +11,7 @@
 <span class=post-comment><i class="icon icon-comment"></i><a href=/blog/2016/04/09/jvm-memory-area/#comments class=article-comment-link>Comments</a></span>
 <span class="post-wordcount hidden-xs" itemprop=wordCount>Word Count:1221words</span>
 <span class="post-readcount hidden-xs" itemprop=timeRequired>Read Count:3minutes</span></div></div><div class="article-entry marked-body js-toc-content" itemprop=articleBody><p>学习Java不可避免的要学习Java虚拟机，也就是JVM，Java虚拟机规范里面规定了程序运行期间会使用到的运行时数据区，这也是JVM的内存区域划分的模型，应该可以这么理解吧。</p><p>这其中有一些是随着虚拟机的启动和退出而创建和销毁的，这些区域是线程共享的，另外有一些是跟各个线程绑定的，随着线程的开始和结束而创建和销毁，我们可以称这些区域是线程私有的。</p><p>根据《Java虚拟机规范Java SE 7版》和《Java虚拟机规范Java SE 8版》的规定，我们可以划分出如下几个运行时数据区，如下图所示：
-<img src=https://tva1.sinaimg.cn/large/006tNbRwgy1g9qgn92jtlj30iu085glu.jpg alt=JVMDataArea></p><h3 id=java>Java堆</h3><p>在Java虚拟机中，堆是可供各个线程共享的运行时内存区域，也是供所有类实例和数组对象分配内存的区域。这块区域随着虚拟机的启动而创建，它的唯一使命就是<strong>存放对象实例</strong>，这块区域也是GC主要关注的地方。</p><p>下面的就是我的笔记本上的JVM堆的划分情况，可以看到分为新生代、老年代和永久代，新生代里面有可以分为Eden Space、From Survivor Space和To Survivor Space。</p><pre><code class=language-{bash} data-lang={bash}>Heap Usage:
+<img src=https://tva1.sinaimg.cn/large/006tNbRwgy1g9qgn92jtlj30iu085glu.jpg alt=JVMDataArea></p><h3 id=java>Java堆</h3><p>在Java虚拟机中，堆是可供各个线程共享的运行时内存区域，也是供所有类实例和数组对象分配内存的区域。这块区域随着虚拟机的启动而创建，它的唯一使命就是<strong>存放对象实例</strong>，这块区域也是GC主要关注的地方。</p><p>下面的就是我的笔记本上的JVM堆的划分情况，可以看到分为新生代、老年代和永久代，新生代里面有可以分为Eden Space、From Survivor Space和To Survivor Space。</p><pre><code class=language-{shell} data-lang={shell}>Heap Usage:
 PS Young Generation
 Eden Space:
    capacity = 17301504 (16.5MB)

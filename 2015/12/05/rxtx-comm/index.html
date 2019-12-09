@@ -10,255 +10,251 @@
 <span class="article-read hidden-xs"><i class="icon icon-eye-fill" aria-hidden=true></i><span id=busuanzi_container_page_pv><span id=busuanzi_value_page_pv>0</span></span></span>
 <span class=post-comment><i class="icon icon-comment"></i><a href=/blog/2015/12/05/rxtx-comm/#comments class=article-comment-link>Comments</a></span>
 <span class="post-wordcount hidden-xs" itemprop=wordCount>Word Count:1428words</span>
-<span class="post-readcount hidden-xs" itemprop=timeRequired>Read Count:3minutes</span></div></div><div class="article-entry marked-body js-toc-content" itemprop=articleBody><p>最近在做传感器数据采集的工作，底层是基于Zigbee的无线传感网络，所有数据采集到Zigbee协调器上然后通知上位机数据采集完成，上位机通过USB转串口去读取数据就可以了。那么问题来了，如何进行串口通讯呢？老板说你用Java写个程序好了嘛，用Java写串口程序也是醉了。实验室也没别人写了，所以就让我写了。当我听到要让我用Java写串口通讯程序的时候我本来是拒绝的，然后。。。就没有然后了。。就只能写了。</p><p>网上看了一下，最后用了一个开源的Java串口通讯库RXTX做串口通讯，下面记录一下RXTX的使用方法。</p><h4 id=heading>环境配置</h4><p>RXTX做串口通讯，有一个jar包(RXTXcomm.jar)和一个rxtxSerial.dll(Windows环境下)或者librxtxSerial.so（Linux环境下），因为开发是在Windows上，但是工作是在Linux上，所以两个都用到了。</p><p><strong>Windows环境下</strong></p><p>文档里是这么写的</p><blockquote><p>Copy rxtxSerial.dll &mdash;> &lt;JAVA_HOME>\jre\bin</p></blockquote><p>但是这个做了之后并不能用，会有一些很奇怪的问题，不知道是不是我的Java环境配置有问题还是怎么了，我是把dll文件copy到了C:\Windows\System32，然后一切正常，一直很奇怪，为什么要cp到&lt;JAVA_HOME>\jre\bin呢？求解答！</p><p><strong>Linux环境下</strong></p><blockquote><p>Copy librxtxSerial.so &mdash;> &lt;JAVA_HOME>/jre/lib/i386/</p></blockquote><blockquote><p>or</p></blockquote><blockquote><p>Copy librxtxSerial.so &mdash;> &lt;JAVA_HOME>/jre/lib/x86_64/</p></blockquote><p>这个按照文档没问题。</p><p><strong>小问题</strong></p><p>我用的是rxtx-2.2pre2版本的，文档里有写运行时会报版本不匹配的WARNING，实际使用中的确也是这样的，不过目前还没有别的问题，不影响使用。</p><h4 id=heading1>常用方法</h4><p>1.查找端口</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>
-<span style=color:#75715e>/**
-</span><span style=color:#75715e>
-</span><span style=color:#75715e>     * 查找所有可用端口
-</span><span style=color:#75715e>
-</span><span style=color:#75715e>     *
-</span><span style=color:#75715e>
-</span><span style=color:#75715e>     * @return 所有端口列表
-</span><span style=color:#75715e>
-</span><span style=color:#75715e>     */</span>
+<span class="post-readcount hidden-xs" itemprop=timeRequired>Read Count:3minutes</span></div></div><div class="article-entry marked-body js-toc-content" itemprop=articleBody><p>最近在做传感器数据采集的工作，底层是基于Zigbee的无线传感网络，所有数据采集到Zigbee协调器上然后通知上位机数据采集完成，上位机通过USB转串口去读取数据就可以了。那么问题来了，如何进行串口通讯呢？老板说你用Java写个程序好了嘛，用Java写串口程序也是醉了。实验室也没别人写了，所以就让我写了。当我听到要让我用Java写串口通讯程序的时候我本来是拒绝的，然后。。。就没有然后了。。就只能写了。</p><p>网上看了一下，最后用了一个开源的Java串口通讯库RXTX做串口通讯，下面记录一下RXTX的使用方法。</p><h4 id=heading>环境配置</h4><p>RXTX做串口通讯，有一个jar包(RXTXcomm.jar)和一个rxtxSerial.dll(Windows环境下)或者librxtxSerial.so（Linux环境下），因为开发是在Windows上，但是工作是在Linux上，所以两个都用到了。</p><p><strong>Windows环境下</strong></p><p>文档里是这么写的</p><blockquote><p>Copy rxtxSerial.dll &mdash;> &lt;JAVA_HOME>\jre\bin</p></blockquote><p>但是这个做了之后并不能用，会有一些很奇怪的问题，不知道是不是我的Java环境配置有问题还是怎么了，我是把dll文件copy到了C:\Windows\System32，然后一切正常，一直很奇怪，为什么要cp到&lt;JAVA_HOME>\jre\bin呢？求解答！</p><p><strong>Linux环境下</strong></p><blockquote><p>Copy librxtxSerial.so &mdash;> &lt;JAVA_HOME>/jre/lib/i386/
+or
+Copy librxtxSerial.so &mdash;> &lt;JAVA_HOME>/jre/lib/x86_64/</p></blockquote><p>这个按照文档没问题。</p><p><strong>小问题</strong></p><p>我用的是rxtx-2.2pre2版本的，文档里有写运行时会报版本不匹配的WARNING，实际使用中的确也是这样的，不过目前还没有别的问题，不影响使用。</p><h4 id=heading1>常用方法</h4><p>1.查找端口</p><pre><code class=language-{java} data-lang={java}>/**
 
-    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>final</span> ArrayList<span style=color:#f92672>&lt;</span>String<span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>findPort</span><span style=color:#f92672>(</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+     * 查找所有可用端口
 
-        Enumeration<span style=color:#f92672>&lt;</span>CommPortIdentifier<span style=color:#f92672>&gt;</span> portList <span style=color:#f92672>=</span> CommPortIdentifier<span style=color:#f92672>.</span><span style=color:#a6e22e>getPortIdentifiers</span><span style=color:#f92672>(</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span><span style=color:#75715e>//获得所有串口
-</span><span style=color:#75715e></span>
-        ArrayList<span style=color:#f92672>&lt;</span>String<span style=color:#f92672>&gt;</span> portNameList <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;</span><span style=color:#f92672>&gt;</span><span style=color:#f92672>(</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span>
+     *
 
-        <span style=color:#75715e>//串口名字添加到List并返回
-</span><span style=color:#75715e></span>
-        <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>portList<span style=color:#f92672>.</span><span style=color:#a6e22e>hasMoreElements</span><span style=color:#f92672>(</span><span style=color:#f92672>)</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+     * @return 所有端口列表
 
-            String portName <span style=color:#f92672>=</span> portList<span style=color:#f92672>.</span><span style=color:#a6e22e>nextElement</span><span style=color:#f92672>(</span><span style=color:#f92672>)</span><span style=color:#f92672>.</span><span style=color:#a6e22e>getName</span><span style=color:#f92672>(</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span>
+     */
 
-            portNameList<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>portName<span style=color:#f92672>)</span><span style=color:#f92672>;</span>
+    public static final ArrayList&lt;String&gt; findPort() {
 
-        <span style=color:#f92672>}</span>
+        Enumeration&lt;CommPortIdentifier&gt; portList = CommPortIdentifier.getPortIdentifiers();//获得所有串口
 
-        <span style=color:#66d9ef>return</span> portNameList<span style=color:#f92672>;</span>
+        ArrayList&lt;String&gt; portNameList = new ArrayList&lt;&gt;();
 
-    <span style=color:#f92672>}</span>
+        //串口名字添加到List并返回
 
-</code></pre></div><p>2.打开端口</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>
-    <span style=color:#75715e>/**
-</span><span style=color:#75715e>
-</span><span style=color:#75715e>     * 打开串口
-</span><span style=color:#75715e>
-</span><span style=color:#75715e>     *
-</span><span style=color:#75715e>
-</span><span style=color:#75715e>     * @param portName 端口名称
-</span><span style=color:#75715e>
-</span><span style=color:#75715e>     * @param baudrate 波特率
-</span><span style=color:#75715e>
-</span><span style=color:#75715e>     * @return 串口对象
-</span><span style=color:#75715e>
-</span><span style=color:#75715e>     */</span>
+        while (portList.hasMoreElements()) {
 
-    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>final</span> SerialPort <span style=color:#a6e22e>openPort</span><span style=color:#f92672>(</span>String portName<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> baudrate<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            String portName = portList.nextElement().getName();
 
-        <span style=color:#66d9ef>try</span> <span style=color:#f92672>{</span>
+            portNameList.add(portName);
 
-            <span style=color:#75715e>//通过端口名识别端口
-</span><span style=color:#75715e></span>
-            CommPortIdentifier portIdentifier <span style=color:#f92672>=</span> CommPortIdentifier<span style=color:#f92672>.</span><span style=color:#a6e22e>getPortIdentifier</span><span style=color:#f92672>(</span>portName<span style=color:#f92672>)</span><span style=color:#f92672>;</span>
+        }
 
-            <span style=color:#75715e>//打开端口，并给端口名字和一个timeout
-</span><span style=color:#75715e></span>
-            CommPort commPort <span style=color:#f92672>=</span> portIdentifier<span style=color:#f92672>.</span><span style=color:#a6e22e>open</span><span style=color:#f92672>(</span>portName<span style=color:#f92672>,</span> 2000<span style=color:#f92672>)</span><span style=color:#f92672>;</span>
+        return portNameList;
 
-            <span style=color:#75715e>//判断是不是串口
-</span><span style=color:#75715e></span>
-            <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>commPort <span style=color:#66d9ef>instanceof</span> SerialPort<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+    }
 
-                SerialPort serialPort <span style=color:#f92672>=</span> <span style=color:#f92672>(</span>SerialPort<span style=color:#f92672>)</span> commPort<span style=color:#f92672>;</span>
+</code></pre><p>2.打开端口</p><pre><code class=language-{java} data-lang={java}>    /**
 
-                <span style=color:#66d9ef>try</span> <span style=color:#f92672>{</span>
+     * 打开串口
 
-                    <span style=color:#75715e>//设置一下串口的波特率等参数
-</span><span style=color:#75715e></span>
-                    serialPort<span style=color:#f92672>.</span><span style=color:#a6e22e>setSerialPortParams</span><span style=color:#f92672>(</span>baudrate<span style=color:#f92672>,</span> SerialPort<span style=color:#f92672>.</span><span style=color:#a6e22e>DATABITS_8</span><span style=color:#f92672>,</span> SerialPort<span style=color:#f92672>.</span><span style=color:#a6e22e>STOPBITS_1</span><span style=color:#f92672>,</span> SerialPort<span style=color:#f92672>.</span><span style=color:#a6e22e>PARITY_NONE</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span>
+     *
 
-                <span style=color:#f92672>}</span> <span style=color:#66d9ef>catch</span> <span style=color:#f92672>(</span>UnsupportedCommOperationException e<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+     * @param portName 端口名称
 
-                    LOGGER<span style=color:#f92672>.</span><span style=color:#a6e22e>error</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Set Serialport Parameters failure&#34;</span><span style=color:#f92672>,</span> e<span style=color:#f92672>)</span><span style=color:#f92672>;</span>
+     * @param baudrate 波特率
 
-                <span style=color:#f92672>}</span>
+     * @return 串口对象
 
-                System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Open &#34;</span> <span style=color:#f92672>+</span> portName <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; sucessfully !&#34;</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span>
+     */
 
-                <span style=color:#66d9ef>return</span> serialPort<span style=color:#f92672>;</span>
+    public static final SerialPort openPort(String portName, int baudrate) {
 
-            <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
+        try {
 
-                LOGGER<span style=color:#f92672>.</span><span style=color:#a6e22e>error</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;This port is not a serialport&#34;</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span>
+            //通过端口名识别端口
 
-                <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>;</span>
+            CommPortIdentifier portIdentifier = CommPortIdentifier.getPortIdentifier(portName);
 
-            <span style=color:#f92672>}</span>
+            //打开端口，并给端口名字和一个timeout
 
-        <span style=color:#f92672>}</span> <span style=color:#66d9ef>catch</span> <span style=color:#f92672>(</span>NoSuchPortException <span style=color:#f92672>|</span> PortInUseException e<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            CommPort commPort = portIdentifier.open(portName, 2000);
 
-            LOGGER<span style=color:#f92672>.</span><span style=color:#a6e22e>error</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;There is no &#34;</span> <span style=color:#f92672>+</span> portName <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;or it&#39;s occupied!&#34;</span><span style=color:#f92672>,</span> e<span style=color:#f92672>)</span><span style=color:#f92672>;</span>
+            //判断是不是串口
 
-            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>;</span>
+            if (commPort instanceof SerialPort) {
 
-        <span style=color:#f92672>}</span>
+                SerialPort serialPort = (SerialPort) commPort;
 
-    <span style=color:#f92672>}</span>
+                try {
 
-</code></pre></div><p>3.发送数据</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>
-    <span style=color:#75715e>/**
-</span><span style=color:#75715e>
-</span><span style=color:#75715e>     * 发送数据
-</span><span style=color:#75715e>
-</span><span style=color:#75715e>     *
-</span><span style=color:#75715e>
-</span><span style=color:#75715e>     * @param serialPort 串口对象
-</span><span style=color:#75715e>
-</span><span style=color:#75715e>     * @param order      命令字节
-</span><span style=color:#75715e>
-</span><span style=color:#75715e>     */</span>
+                    //设置一下串口的波特率等参数
 
-    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>sendToPort</span><span style=color:#f92672>(</span>SerialPort serialPort<span style=color:#f92672>,</span> <span style=color:#66d9ef>byte</span><span style=color:#f92672>[</span><span style=color:#f92672>]</span> order<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                    serialPort.setSerialPortParams(baudrate, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
 
-        <span style=color:#66d9ef>try</span> <span style=color:#f92672>{</span>
+                } catch (UnsupportedCommOperationException e) {
 
-            OutputStream out <span style=color:#f92672>=</span> serialPort<span style=color:#f92672>.</span><span style=color:#a6e22e>getOutputStream</span><span style=color:#f92672>(</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span>
+                    LOGGER.error(&quot;Set Serialport Parameters failure&quot;, e);
 
-            out<span style=color:#f92672>.</span><span style=color:#a6e22e>write</span><span style=color:#f92672>(</span>order<span style=color:#f92672>)</span><span style=color:#f92672>;</span>
+                }
 
-            out<span style=color:#f92672>.</span><span style=color:#a6e22e>flush</span><span style=color:#f92672>(</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span>
+                System.out.println(&quot;Open &quot; + portName + &quot; sucessfully !&quot;);
 
-            out<span style=color:#f92672>.</span><span style=color:#a6e22e>close</span><span style=color:#f92672>(</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span>
+                return serialPort;
 
-        <span style=color:#f92672>}</span> <span style=color:#66d9ef>catch</span> <span style=color:#f92672>(</span>IOException e<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            } else {
 
-            LOGGER<span style=color:#f92672>.</span><span style=color:#a6e22e>error</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Send to SerialPort failure&#34;</span><span style=color:#f92672>,</span> e<span style=color:#f92672>)</span><span style=color:#f92672>;</span>
+                LOGGER.error(&quot;This port is not a serialport&quot;);
 
-        <span style=color:#f92672>}</span>
+                return null;
 
-    <span style=color:#f92672>}</span>
+            }
 
-</code></pre></div><p>4.读取数据</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>
-    <span style=color:#75715e>/**
-</span><span style=color:#75715e>
-</span><span style=color:#75715e>     * 读取数据
-</span><span style=color:#75715e>
-</span><span style=color:#75715e>     *
-</span><span style=color:#75715e>
-</span><span style=color:#75715e>     * @return 字节ArrayList
-</span><span style=color:#75715e>
-</span><span style=color:#75715e>     */</span>
+        } catch (NoSuchPortException | PortInUseException e) {
 
-    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>byte</span><span style=color:#f92672>[</span><span style=color:#f92672>]</span> <span style=color:#a6e22e>readFromPort</span><span style=color:#f92672>(</span>InputStream inStream<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            LOGGER.error(&quot;There is no &quot; + portName + &quot;or it's occupied!&quot;, e);
 
-        <span style=color:#66d9ef>byte</span><span style=color:#f92672>[</span><span style=color:#f92672>]</span> bytes <span style=color:#f92672>=</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>;</span>
+            return null;
 
-        <span style=color:#66d9ef>try</span> <span style=color:#f92672>{</span>
+        }
 
-            <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>true</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+    }
 
-                <span style=color:#75715e>//获取buffer里的数据长度
-</span><span style=color:#75715e></span>
-                <span style=color:#66d9ef>int</span> bufflenth <span style=color:#f92672>=</span> inStream<span style=color:#f92672>.</span><span style=color:#a6e22e>available</span><span style=color:#f92672>(</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span>
+</code></pre><p>3.发送数据</p><pre><code class=language-{java} data-lang={java}>    /**
 
-                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>0 <span style=color:#f92672>=</span><span style=color:#f92672>=</span> bufflenth<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+     * 发送数据
 
-                    <span style=color:#66d9ef>break</span><span style=color:#f92672>;</span>
+     *
 
-                <span style=color:#f92672>}</span>
+     * @param serialPort 串口对象
 
-                bytes <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>byte</span><span style=color:#f92672>[</span>bufflenth<span style=color:#f92672>]</span><span style=color:#f92672>;</span>
+     * @param order      命令字节
 
-                inStream<span style=color:#f92672>.</span><span style=color:#a6e22e>read</span><span style=color:#f92672>(</span>bytes<span style=color:#f92672>)</span><span style=color:#f92672>;</span>
+     */
 
-            <span style=color:#f92672>}</span>
+    public void sendToPort(SerialPort serialPort, byte[] order) {
 
-        <span style=color:#f92672>}</span> <span style=color:#66d9ef>catch</span> <span style=color:#f92672>(</span>IOException e<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        try {
 
-            LOGGER<span style=color:#f92672>.</span><span style=color:#a6e22e>error</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Read Data Failure&#34;</span><span style=color:#f92672>,</span> e<span style=color:#f92672>)</span><span style=color:#f92672>;</span>
+            OutputStream out = serialPort.getOutputStream();
 
-        <span style=color:#f92672>}</span>
+            out.write(order);
 
-        <span style=color:#66d9ef>return</span> bytes<span style=color:#f92672>;</span>
+            out.flush();
 
-    <span style=color:#f92672>}</span>
+            out.close();
 
-</code></pre></div><h4 id=heading2>监听器</h4><p>1.实现监听器</p><p>继承SerialPortEventListener然后重写serialEvent,然后再各个对应case里面写代码就好啦。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>TestExample</span> <span style=color:#66d9ef>implements</span> SerialPortEventListener <span style=color:#f92672>{</span>
+        } catch (IOException e) {
 
-    <span style=color:#a6e22e>@Override</span>
+            LOGGER.error(&quot;Send to SerialPort failure&quot;, e);
 
-    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>serialEvent</span><span style=color:#f92672>(</span>SerialPortEvent serialPortEvent<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        }
 
-        <span style=color:#66d9ef>switch</span> <span style=color:#f92672>(</span>serialPortEvent<span style=color:#f92672>.</span><span style=color:#a6e22e>getEventType</span><span style=color:#f92672>(</span><span style=color:#f92672>)</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+    }
 
-            <span style=color:#66d9ef>case</span> SerialPortEvent<span style=color:#f92672>.</span><span style=color:#a6e22e>BI</span><span style=color:#f92672>:</span> <span style=color:#75715e>// 10通讯中断
-</span><span style=color:#75715e></span>
-            <span style=color:#66d9ef>case</span> SerialPortEvent<span style=color:#f92672>.</span><span style=color:#a6e22e>OE</span><span style=color:#f92672>:</span> <span style=color:#75715e>// 7溢位错误
-</span><span style=color:#75715e></span>
-            <span style=color:#66d9ef>case</span> SerialPortEvent<span style=color:#f92672>.</span><span style=color:#a6e22e>FE</span><span style=color:#f92672>:</span> <span style=color:#75715e>// 9帧错误
-</span><span style=color:#75715e></span>
-            <span style=color:#66d9ef>case</span> SerialPortEvent<span style=color:#f92672>.</span><span style=color:#a6e22e>PE</span><span style=color:#f92672>:</span> <span style=color:#75715e>// 8奇偶校验错
-</span><span style=color:#75715e></span>
-            <span style=color:#66d9ef>case</span> SerialPortEvent<span style=color:#f92672>.</span><span style=color:#a6e22e>CD</span><span style=color:#f92672>:</span> <span style=color:#75715e>// 6载波检测
-</span><span style=color:#75715e></span>
-            <span style=color:#66d9ef>case</span> SerialPortEvent<span style=color:#f92672>.</span><span style=color:#a6e22e>CTS</span><span style=color:#f92672>:</span> <span style=color:#75715e>// 3清除发送
-</span><span style=color:#75715e></span>
-            <span style=color:#66d9ef>case</span> SerialPortEvent<span style=color:#f92672>.</span><span style=color:#a6e22e>DSR</span><span style=color:#f92672>:</span> <span style=color:#75715e>// 4数据设备准备好
-</span><span style=color:#75715e></span>
-            <span style=color:#66d9ef>case</span> SerialPortEvent<span style=color:#f92672>.</span><span style=color:#a6e22e>RI</span><span style=color:#f92672>:</span> <span style=color:#75715e>// 5振铃指示
-</span><span style=color:#75715e></span>
-            <span style=color:#66d9ef>case</span> SerialPortEvent<span style=color:#f92672>.</span><span style=color:#a6e22e>OUTPUT_BUFFER_EMPTY</span><span style=color:#f92672>:</span> <span style=color:#75715e>// 2输出缓冲区已清空
-</span><span style=color:#75715e></span>
-            <span style=color:#66d9ef>case</span> SerialPortEvent<span style=color:#f92672>.</span><span style=color:#a6e22e>DATA_AVAILABLE</span><span style=color:#f92672>:</span> <span style=color:#75715e>// 1读到可用数据时激活
-</span><span style=color:#75715e></span>
-        <span style=color:#f92672>}</span>
+</code></pre><p>4.读取数据</p><pre><code class=language-{java} data-lang={java}>    /**
 
-    <span style=color:#f92672>}</span>
+     * 读取数据
 
-<span style=color:#f92672>}</span>
+     *
 
-</code></pre></div><p>2.给串口添加监听器</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>
-    <span style=color:#75715e>/**
-</span><span style=color:#75715e>
-</span><span style=color:#75715e>     * 添加监听器
-</span><span style=color:#75715e>
-</span><span style=color:#75715e>     *
-</span><span style=color:#75715e>
-</span><span style=color:#75715e>     * @param port     串口对象
-</span><span style=color:#75715e>
-</span><span style=color:#75715e>     * @param listener 串口监听器
-</span><span style=color:#75715e>
-</span><span style=color:#75715e>     */</span>
+     * @return 字节ArrayList
 
-    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>addListener</span><span style=color:#f92672>(</span>SerialPort port<span style=color:#f92672>,</span> SerialPortEventListener listener<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+     */
 
-        <span style=color:#66d9ef>try</span> <span style=color:#f92672>{</span>
+    public byte[] readFromPort(InputStream inStream) {
 
-            <span style=color:#75715e>// 给串口添加监听器
-</span><span style=color:#75715e></span>
-            port<span style=color:#f92672>.</span><span style=color:#a6e22e>addEventListener</span><span style=color:#f92672>(</span>listener<span style=color:#f92672>)</span><span style=color:#f92672>;</span>
+        byte[] bytes = null;
 
-            <span style=color:#75715e>// 设置当有数据到达时唤醒监听接收线程
-</span><span style=color:#75715e></span>
-            port<span style=color:#f92672>.</span><span style=color:#a6e22e>notifyOnDataAvailable</span><span style=color:#f92672>(</span><span style=color:#66d9ef>true</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span>
+        try {
 
-            port<span style=color:#f92672>.</span><span style=color:#a6e22e>notifyOnBreakInterrupt</span><span style=color:#f92672>(</span><span style=color:#66d9ef>true</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span>
+            while (true) {
 
-            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Add listeners to &#34;</span> <span style=color:#f92672>+</span> port<span style=color:#f92672>.</span><span style=color:#a6e22e>getName</span><span style=color:#f92672>(</span><span style=color:#f92672>)</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; sucessfully !&#34;</span><span style=color:#f92672>)</span><span style=color:#f92672>;</span>
+                //获取buffer里的数据长度
 
-        <span style=color:#f92672>}</span> <span style=color:#66d9ef>catch</span> <span style=color:#f92672>(</span>TooManyListenersException e<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                int bufflenth = inStream.available();
 
-            LOGGER<span style=color:#f92672>.</span><span style=color:#a6e22e>error</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;There is too many listeners !&#34;</span><span style=color:#f92672>,</span> e<span style=color:#f92672>)</span><span style=color:#f92672>;</span>
+                if (0 == bufflenth) {
 
-        <span style=color:#f92672>}</span>
+                    break;
 
-    <span style=color:#f92672>}</span>
+                }
 
-</code></pre></div><h4 id=tip>TIP</h4><p>** 一定记得从串口发指令取数据之后加一个延时，等待底层数据传输完成再去buffer里面取，不然很大可能数据包不完整。 **</p></div><div class=article-footer></div></article><section id=comments></section></div><nav class="bar bar-footer clearfix" data-stick-bottom><div class=bar-inner><ul class="pager pull-left"><li class=prev><a href=https://holtenko.github.io/blog/2015/12/05/git-install-with-source/ title=CentOS下通过源码安装最新版Git><i class="icon icon-angle-left" aria-hidden=true></i><span>&nbsp;&nbsp;Older</span></a></li><li class=next><a href=https://holtenko.github.io/blog/2016/03/17/iterm2-with-ohmyzsh/ title=iTerm2和oh-my-zsh的个性化定制><span>Newer&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden=true></i></a></li><li class=toggle-toc><a class="toggle-btn collapsed" data-toggle=collapse href=#collapseToc aria-expanded=false title=Catalogue role=button><span>[&nbsp;</span><span>Catalogue</span>
+                bytes = new byte[bufflenth];
+
+                inStream.read(bytes);
+
+            }
+
+        } catch (IOException e) {
+
+            LOGGER.error(&quot;Read Data Failure&quot;, e);
+
+        }
+
+        return bytes;
+
+    }
+
+</code></pre><h4 id=heading2>监听器</h4><p>1.实现监听器</p><p>继承SerialPortEventListener然后重写serialEvent,然后再各个对应case里面写代码就好啦。</p><pre><code class=language-{java} data-lang={java}>public class TestExample implements SerialPortEventListener {
+
+    @Override
+
+    public void serialEvent(SerialPortEvent serialPortEvent) {
+
+        switch (serialPortEvent.getEventType()) {
+
+            case SerialPortEvent.BI: // 10通讯中断
+
+            case SerialPortEvent.OE: // 7溢位错误
+
+            case SerialPortEvent.FE: // 9帧错误
+
+            case SerialPortEvent.PE: // 8奇偶校验错
+
+            case SerialPortEvent.CD: // 6载波检测
+
+            case SerialPortEvent.CTS: // 3清除发送
+
+            case SerialPortEvent.DSR: // 4数据设备准备好
+
+            case SerialPortEvent.RI: // 5振铃指示
+
+            case SerialPortEvent.OUTPUT_BUFFER_EMPTY: // 2输出缓冲区已清空
+
+            case SerialPortEvent.DATA_AVAILABLE: // 1读到可用数据时激活
+
+        }
+
+    }
+
+}
+
+</code></pre><p>2.给串口添加监听器</p><pre><code class=language-{java} data-lang={java}>    /**
+
+     * 添加监听器
+
+     *
+
+     * @param port     串口对象
+
+     * @param listener 串口监听器
+
+     */
+
+    public static void addListener(SerialPort port, SerialPortEventListener listener) {
+
+        try {
+
+            // 给串口添加监听器
+
+            port.addEventListener(listener);
+
+            // 设置当有数据到达时唤醒监听接收线程
+
+            port.notifyOnDataAvailable(true);
+
+            port.notifyOnBreakInterrupt(true);
+
+            System.out.println(&quot;Add listeners to &quot; + port.getName() + &quot; sucessfully !&quot;);
+
+        } catch (TooManyListenersException e) {
+
+            LOGGER.error(&quot;There is too many listeners !&quot;, e);
+
+        }
+
+    }
+
+</code></pre><h4 id=tip>TIP</h4><p>** 一定记得从串口发指令取数据之后加一个延时，等待底层数据传输完成再去buffer里面取，不然很大可能数据包不完整。 **</p></div><div class=article-footer></div></article><section id=comments></section></div><nav class="bar bar-footer clearfix" data-stick-bottom><div class=bar-inner><ul class="pager pull-left"><li class=prev><a href=https://holtenko.github.io/blog/2015/12/05/git-install-with-source/ title=CentOS下通过源码安装最新版Git><i class="icon icon-angle-left" aria-hidden=true></i><span>&nbsp;&nbsp;Older</span></a></li><li class=next><a href=https://holtenko.github.io/blog/2016/03/17/iterm2-with-ohmyzsh/ title=iTerm2和oh-my-zsh的个性化定制><span>Newer&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden=true></i></a></li><li class=toggle-toc><a class="toggle-btn collapsed" data-toggle=collapse href=#collapseToc aria-expanded=false title=Catalogue role=button><span>[&nbsp;</span><span>Catalogue</span>
 <i class="text-collapsed icon icon-anchor"></i><i class="text-in icon icon-close"></i><span>]</span></a></li></ul><button type=button class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle=modal data-target=#donateModal><span>$</span></button><div class=bar-right><div class=share-component data-sites=weibo,qq,wechat,facebook,twitter data-mobile-sites=weibo,qq,qzone></div></div></div></nav><div class="modal modal-center modal-small modal-xs-full fade" id=donateModal tabindex=-1 role=dialog><div class=modal-dialog role=document><div class="modal-content donate"><button type=button class=close data-dismiss=modal aria-label=Close><span aria-hidden=true>&#215;</span></button><div class=modal-body><div class=donate-box><div class=donate-head><p>Maybe you could buy me a cup of coffee.</p></div><div class=tab-content><div role=tabpanel class="tab-pane fade active in" id=alipay><div class=donate-payimg><img src=https://holtenko.github.io/blog/donate/alipayimg.jpg alt="Scan Qrcode" title=Scan></div><p class="text-muted mv">Scan this qrcode</p><p class=text-grey>Open alipay app scan this qrcode, buy me a coffee!</p></div><div role=tabpanel class="tab-pane fade" id=wechatpay><div class=donate-payimg><img src=https://holtenko.github.io/blog/donate/wechatpayimg.png alt="Scan Qrcode" title=Scan></div><p class="text-muted mv">Scan this qrcode</p><p class=text-grey>Open wechat app scan this qrcode, buy me a coffee!</p></div></div><div class=donate-footer><ul class="nav nav-tabs nav-justified" role=tablist><li role=presentation class=active><a href=#alipay id=alipay-tab role=tab data-toggle=tab aria-controls=alipay aria-expanded=true><i class="icon icon-alipay"></i>alipay</a></li><li role=presentation><a href=#wechatpay role=tab id=wechatpay-tab data-toggle=tab aria-controls=wechatpay aria-expanded=false><i class="icon icon-wepay"></i>wechat payment</a></li></ul></div></div></div></div></div></div></main><footer class=footer itemscope itemtype=http://schema.org/WPFooter><ul class=social-links><li><a href=https://github.com/holtenko target=_blank title=github data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li><li><a href=https://holtenko.github.io/blog/index.xml target=_blank title=rss data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li></ul><div class=copyright>&copy;2016 -
 2019<div class=publishby>Theme by <a href=https://github.com/xiaoheiAh target=_blank>xiaoheiAh </a>base on<a href=https://github.com/xiaoheiAh/hugo-theme-pure target=_blank> pure</a>.</div></div></footer><script src=https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js></script><script>window.jQuery||document.write('<script src="js/jquery.min.js"><\/script>')</script><script type=text/javascript src=https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js></script><script type=text/javascript src=https://cdn.staticfile.org/highlight.js/9.15.10/languages/rust.min.js></script><script type=text/javascript src=https://cdn.staticfile.org/highlight.js/9.15.10/languages/dockerfile.min.js></script><script>hljs.configure({tabReplace:'    ',classPrefix:''})
 hljs.initHighlightingOnLoad();</script><script type=text/javascript src=https://holtenko.github.io/blog/js/application.js></script><script type=text/javascript src=https://holtenko.github.io/blog/js/plugin.js></script><script>(function(window){var INSIGHT_CONFIG={TRANSLATION:{POSTS:'Posts',PAGES:'Pages',CATEGORIES:'Categories',TAGS:'Tags',UNTITLED:'(Untitled)',},ROOT_URL:'https:\/\/holtenko.github.io\/blog',CONTENT_URL:'https:\/\/holtenko.github.io\/blog\/searchindex.json ',};window.INSIGHT_CONFIG=INSIGHT_CONFIG;})(window);</script><script type=text/javascript src=https://holtenko.github.io/blog/js/insight.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js></script><script>tocbot.init({tocSelector:'.js-toc',contentSelector:'.js-toc-content',headingSelector:'h1, h2, h3',hasInnerContainers:true,});</script><script async src=https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script><script src=https://cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js></script><script src=https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js></script><script type=text/javascript>var gitalk=new Gitalk({clientID:'5d761b19e0061cb39120',clientSecret:'33d4d53b7737eed611ff8e1250b2f73d456c819c',repo:'blog',owner:'holtenko',admin:['holtenko'],id:md5(location.pathname),distractionFreeMode:true});gitalk.render('comments');</script><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-77346613-2','auto');ga('send','pageview');}</script><script async src=https://www.google-analytics.com/analytics.js></script></body></html>
