@@ -11,8 +11,10 @@ jobs:
     
     steps:
     - name: Checkout # 将仓库内master分支的内容下载到工作目录
-      uses: actions/checkout@master # 脚本来自 https://github.com/actions/checkout
-      
+      uses: actions/checkout@v1
+      with:
+         submodules: true
+
     - name: Use Node.js 10.x # 配置Node环境
       uses: actions/setup-node@master # 配置脚本来自 https://github.com/actions/setup-node
       with:
@@ -27,7 +29,8 @@ jobs:
     - name: Generate
       run: |
         # generate
-        hexo generate # 执行部署程序
+        hexo clean
+        hexo g # 执行部署程序
         
     - name: Deploy
       uses: peaceiris/actions-gh-pages@master
