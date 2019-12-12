@@ -11,7 +11,7 @@ jobs:
     
     steps:
     - name: Checkout # 将仓库内master分支的内容下载到工作目录
-    - uses: actions/checkout@v1
+      uses: actions/checkout@v1
       with:
          submodules: true
 
