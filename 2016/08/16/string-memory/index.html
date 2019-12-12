@@ -28,7 +28,7 @@
 <meta property="og:description" content="前言之前写过一篇关于JVM内存区域划分的文章，但是昨天接到蚂蚁金服的面试，问到JVM相关的内容，解释一下JVM的内存区域划分，这部分答得还不错，但是后来又问了Java里面String存放的位置，之前只记得String是一个不变的量，应该是要存放在常量池里面的，但是后来问到new一个String出来应该是放到哪里的，这个应该是放到堆里面的，后来又问到String的引用是放在什么地方的，当时傻逼的说也">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2016-08-16T05:12:56.000Z">
-<meta property="article:modified_time" content="2019-12-12T03:36:00.314Z">
+<meta property="article:modified_time" content="2019-12-12T03:43:22.126Z">
 <meta property="article:author" content="Holten">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="内存">
@@ -40,7 +40,7 @@
     <link rel="alternate" href="/atom.xml" title="小天涯" type="application/atom+xml">
   
   
-    <link rel="icon" href="../images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
   
   
 <link rel="stylesheet" href="/blog/css/style.css">
@@ -182,7 +182,7 @@
     <div class="widget-body">
         <div id="board">
             <div class="content">
-                <p><b>E-mail:</b> holten.ko@foxmail.com</p><p><b>QQ:</b> 562906376</p><p><b>微信:</b> AllenKO_</p>
+                <p><b>E-mail:</b> holten.ko@foxmail.com</p><p><b>QQ:</b> 562906376</p>
             </div>
         </div>
     </div>
@@ -368,8 +368,6 @@
 	
 		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 641(字)</span>
 	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
 	
 
       </div>

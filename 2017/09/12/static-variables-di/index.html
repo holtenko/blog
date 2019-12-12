@@ -28,7 +28,7 @@
 <meta property="og:description" content="做项目的时候有可能会经常发生这样的事情，就是要在静态方法里面调用其他类的方法，如果直接new一个出来的话，有可能会造成该类和该类里面的其他依赖类无法正常的注入，如果直接@Autowired在这个静态变量上的话会造成该变量还是null。 为什么呢？因为静态变量不是一个对象，只是类的引用，而类被加载字节码的时候，变量已经初始化了，也就是给该变量分配内存了，导致spring忽略静态变量。 如何解决呢？可">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-09-12T10:27:00.000Z">
-<meta property="article:modified_time" content="2019-12-12T03:36:00.314Z">
+<meta property="article:modified_time" content="2019-12-12T03:43:22.126Z">
 <meta property="article:author" content="Holten">
 <meta property="article:tag" content="Wiki">
 <meta property="article:tag" content="Java">
@@ -40,7 +40,7 @@
     <link rel="alternate" href="/atom.xml" title="小天涯" type="application/atom+xml">
   
   
-    <link rel="icon" href="../images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
   
   
 <link rel="stylesheet" href="/blog/css/style.css">
@@ -182,7 +182,7 @@
     <div class="widget-body">
         <div id="board">
             <div class="content">
-                <p><b>E-mail:</b> holten.ko@foxmail.com</p><p><b>QQ:</b> 562906376</p><p><b>微信:</b> AllenKO_</p>
+                <p><b>E-mail:</b> holten.ko@foxmail.com</p><p><b>QQ:</b> 562906376</p>
             </div>
         </div>
     </div>
@@ -368,8 +368,6 @@
 	
 		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 205(字)</span>
 	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
 	
 
       </div>
