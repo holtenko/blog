@@ -28,7 +28,7 @@
 <meta property="og:description" content="227 Entering Passive Mode1234响应: 227 Entering Passive Mode (192,168,1,16,221,111).命令: LIST错误: 连接超时错误: 读取目录列表失败  解决方法：  打开&#x2F;etc&#x2F;vsftpd&#x2F;vsftpd.conf在最后面加入如下：  12pasv_min_port&#x3D;1pasv_max_port&#x3D;30999   在iptab">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-09-18T07:27:00.000Z">
-<meta property="article:modified_time" content="2019-12-12T03:24:21.302Z">
+<meta property="article:modified_time" content="2019-12-12T03:36:00.310Z">
 <meta property="article:author" content="Holten">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="FTP">
@@ -48,11 +48,11 @@
 
   
   
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitment@0.0.3/style/default.min.css">
-  
   
     <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
   
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
   
 <meta name="generator" content="Hexo 4.1.0"></head>
 
@@ -439,7 +439,7 @@
     
   <section id="comments">
   	
-
+           
     
   </section>
 
@@ -590,24 +590,23 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
    
     
-<script src="//cdn.jsdelivr.net/npm/gitment@0.0.3/dist/gitment.browser.min.js"></script>
-<script>
-var gitment = new Gitment({
-  // id默认为当前页面url，如果url后带参数或锚点，gitment要重新初始化
-  // https://github.com/imsun/gitment/issues/55
-  // 解决方案：id:window.location.pathname,或者将id设置为当前页面标题
-  id: 'FTP常见错误及解决方案', 
-  owner: '', // 可以是你的GitHub用户名，也可以是github id
-  repo: '',
-  oauth: {
-    client_id: '',
-    client_secret: '',
-  }
-})
-gitment.render('comments')
-</script>
+  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '5d761b19e0061cb39120',
+    clientSecret: '33d4d53b7737eed611ff8e1250b2f73d456c819c',
+    repo: 'blog',
+    owner: 'holtenko',
+    admin: ['holtenko'],
+    id: md5(location.pathname),
+    distractionFreeMode: true
+  })
+  gitalk.render('comments')
+  </script>
 
-
+      
 
 
 
